@@ -1,0 +1,137 @@
+body {
+	background: url("/img/bkgrd-txtr-offwhite.jpg");
+	/*TODO: color override is not working*/
+	color: black;
+}
+
+/* ======== Home Page Styles ======== */
+
+#home-wrapper {
+	background: transparent;
+	width: 95%;
+	border: 10px solid;
+	border-radius: 100px;
+	overflow: hidden;
+	position: relative;
+}
+
+#body-img {
+	position: absolute;
+	z-index: 1;
+	/*display: none;*/
+}
+
+.radial-div {
+	background: transparent;
+	margin: 5px;
+	position: absolute;
+	font-size: 50px;
+}
+
+/*.radial-div a:hover {
+	transform: scale(10%);
+}
+
+#rad1 a:hover > span, #rad2 a:hover > span {
+	transform: translate(50px);
+}
+
+#rad3 a:hover > span, #rad4 a:hover > span {
+	transform: translate(-50px);
+}*/
+
+#rad1 {
+	left: 675px;
+	transform: rotate(-25deg);
+	-webkit-transform: rotate(-25deg);
+	-moz-transform: rotate(-25deg);
+	text-align: left;
+	padding-left: 150px;
+}
+
+#rad2 {
+	left: 675px;
+	top: 700px;
+	transform: rotate(25deg);
+	-webkit-transform: rotate(25deg);
+	-moz-transform: rotate(25deg);
+	text-align: left;
+	padding-left: 150px;
+}
+
+#rad3 {
+	left: 475px;
+	transform: rotate(25deg);
+	-webkit-transform: rotate(25deg);
+	-moz-transform: rotate(25deg);
+	text-align: right;
+	padding-right: 150px;
+}
+
+#rad4 {
+	left: 475px;
+	top: 700px;
+	transform: rotate(-25deg);
+	-webkit-transform: rotate(-25deg);
+	-moz-transform: rotate(-25deg);
+	text-align: right;
+	padding-right: 150px;
+}
+
+#horiz-divider {
+	height: 20px;
+	position: absolute;
+	background: #333333;
+}
+
+.home-qtr {
+	position: absolute;
+	z-index: -1;
+}
+
+#hqtr1 {
+	background: #1A6273;
+}
+
+#hqtr2 {
+	background: #7D2410;
+}
+
+#hqtr3 {
+	background: #80533D;
+}
+
+#hqtr4 {
+	background: #1A3E5E;
+}
+
+.home-angle {
+    left: 278px;
+    position: absolute;
+    height:555.75px;
+    width: 555.75px;
+    transform: rotate(45deg) skew(20deg, 20deg);
+    -webkit-transform: rotate(45deg) skew(20deg, 20deg);
+    -moz-transform: rotate(45deg) skew(20deg, 20deg);
+}
+
+#hang-top {
+	background: #91883C;
+    top: -210px;
+}
+
+#hang-bottom {
+	background: #91883C;
+	top: 880px;
+}
+
+.main-component {
+	background: white;
+	border: solid 1px;
+}
+
+/* ======== Misc Assignments Styles =========== */
+
+#survey-results-table td {
+	padding: 0 15px;
+}
