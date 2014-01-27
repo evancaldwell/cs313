@@ -1,9 +1,12 @@
 <?php
    session_start();
+   echo "started the session<br>";
    $appOptions = ['writing' => 0,'freeapp' => 0,'funny' => 0,'university' => 0,'list' => 0,'learning' => 0,'mosaic' => 0];
    $resultsFile = fopen("survey_results.txt", "a+") or exit("Unable to open file!");
+   echo "opened the file<br>";
 
    if (isset($_POST['name'])) {
+      echo "got the post<br>";
       $name = $email = $major = $app = $comments = "";
       $name = htmlspecialchars($_POST["name"]);
       $email = htmlspecialchars($_POST["email"]);
@@ -31,6 +34,7 @@
       }
    }
    fclose($resultsFile);
+   echo "closed the file<br>";
 ?>
 
 <!DOCTYPE html>
