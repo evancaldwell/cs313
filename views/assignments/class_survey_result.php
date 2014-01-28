@@ -1,40 +1,40 @@
 <?php
    session_start();
-   echo "started the session<br>";
    $appOptions = ['writing' => 0,'freeapp' => 0,'funny' => 0,'university' => 0,'list' => 0,'learning' => 0,'mosaic' => 0];
-   $resultsFile = fopen("survey_results.txt", "a+") or $message = exit("Unable to open file!");
-   echo "opened the file<br>";
+   try {
+      $resultsFile = fopen("survey_results.txt", "a+") or $message = exit("Unable to open file!");
 
-   if (isset($_POST['name'])) {
-      echo "got the post<br>";
-      $name = $email = $major = $app = $comments = "";
-      $name = htmlspecialchars($_POST["name"]);
-      $email = htmlspecialchars($_POST["email"]);
-      $major = $_POST["major"];
-      $app = $_POST["app"];
-      $comments = htmlspecialchars($_POST["comments"]);
-      $_SESSION["voted"] = true;
+      if (isset($_POST['name'])) {
+         $name = $email = $major = $app = $comments = "";
+         $name = htmlspecialchars($_POST["name"]);
+         $email = htmlspecialchars($_POST["email"]);
+         $major = $_POST["major"];
+         $app = $_POST["app"];
+         $comments = htmlspecialchars($_POST["comments"]);
+         $_SESSION["voted"] = true;
 
-      $resultString = $name."\t".$email."\t".$major."\t".$app."\t".$comments."\r\n";
-      $resultsWritten = fwrite($resultsFile, $resultString);
-   } else {
-      if ($_SESSION['voted'] != true) {
-         echo "something wrong with the post."."<br>";
-      }
-   }
-
-   $allResults = [];
-   while(!feof($resultsFile)) {
-      $line = fgets($resultsFile);
-      array_push($allResults, $line);
-      foreach ($appOptions as $key => $value) {
-         if (stripos($line, $key) > 0) {
-            $appOptions[$key] += 1;
+         $resultString = $name."\t".$email."\t".$major."\t".$app."\t".$comments."\r\n";
+         $resultsWritten = fwrite($resultsFile, $resultString);
+      } else {
+         if ($_SESSION['voted'] != true) {
+            echo "something wrong with the post."."<br>";
          }
       }
+
+      $allResults = [];
+      while(!feof($resultsFile)) {
+         $line = fgets($resultsFile);
+         array_push($allResults, $line);
+         foreach ($appOptions as $key => $value) {
+            if (stripos($line, $key) > 0) {
+               $appOptions[$key] += 1;
+            }
+         }
+      }
+      fclose($resultsFile);
+   } catch (Exception $e) {
+      $message = 'Message: ' .$e->getMessage();
    }
-   fclose($resultsFile);
-   echo "closed the file<br>";
 ?>
 <!DOCTYPE html>
 <html>
