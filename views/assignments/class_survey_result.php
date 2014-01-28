@@ -42,7 +42,7 @@
 
    <body>
       <div class="container">
-         <?php include("/modules/header.php");?>
+         <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
          <main id="main">
             <div>
                <?php if (isset($message)) { ?>

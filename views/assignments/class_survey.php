@@ -13,7 +13,7 @@ if (isset($_SESSION["voted"])) {
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/head.php'; ?>
 	<body>
 		<div class="container">
-			<?php include("/modules/header.php"); ?>
+         	<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
 			<main id="main">
 				<div class="form row">
 					<div class="col-md-10 col-md-offset-1">
