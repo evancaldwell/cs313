@@ -3,7 +3,7 @@
 session_start();
 if (isset($_SESSION["voted"])) {
 	if ($_SESSION["voted"]) {
-		// redirect to resultss
+		// redirect to results
 		header("Location: /views/assignments/class_survey_result.php");
 	}
 }
@@ -13,7 +13,7 @@ if (isset($_SESSION["voted"])) {
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/head.php'; ?>
 	<body>
 		<div class="container">
-			<?php include("modules/header.php");?>
+			<?php include("/modules/header.php"); ?>
 			<main id="main">
 				<div class="form row">
 					<div class="col-md-10 col-md-offset-1">
