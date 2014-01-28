@@ -2,37 +2,37 @@
    session_start();
    echo "started the session<br>";
    $appOptions = ['writing' => 0,'freeapp' => 0,'funny' => 0,'university' => 0,'list' => 0,'learning' => 0,'mosaic' => 0];
-   $resultsFile = fopen("survey_results.txt", "a+") or exit("Unable to open file!");
+   $resultsFile = fopen("survey_results.txt", "a+") or $message = exit("Unable to open file!");
    echo "opened the file<br>";
 
-   // if (isset($_POST['name'])) {
-   //    echo "got the post<br>";
-   //    $name = $email = $major = $app = $comments = "";
-   //    $name = htmlspecialchars($_POST["name"]);
-   //    $email = htmlspecialchars($_POST["email"]);
-   //    $major = $_POST["major"];
-   //    $app = $_POST["app"];
-   //    $comments = htmlspecialchars($_POST["comments"]);
-   //    $_SESSION["voted"] = true;
+   if (isset($_POST['name'])) {
+      echo "got the post<br>";
+      $name = $email = $major = $app = $comments = "";
+      $name = htmlspecialchars($_POST["name"]);
+      $email = htmlspecialchars($_POST["email"]);
+      $major = $_POST["major"];
+      $app = $_POST["app"];
+      $comments = htmlspecialchars($_POST["comments"]);
+      $_SESSION["voted"] = true;
 
-   //    $resultString = $name."\t".$email."\t".$major."\t".$app."\t".$comments."\r\n";
-   //    $resultsWritten = fwrite($resultsFile, $resultString);
-   // } else {
-   //    if ($_SESSION['voted'] != true) {
-   //       echo "something wrong with the post."."<br>";
-   //    }
-   // }
+      $resultString = $name."\t".$email."\t".$major."\t".$app."\t".$comments."\r\n";
+      $resultsWritten = fwrite($resultsFile, $resultString);
+   } else {
+      if ($_SESSION['voted'] != true) {
+         echo "something wrong with the post."."<br>";
+      }
+   }
 
-   // $allResults = [];
-   // while(!feof($resultsFile)) {
-   //    $line = fgets($resultsFile);
-   //    array_push($allResults, $line);
-   //    foreach ($appOptions as $key => $value) {
-   //       if (stripos($line, $key) > 0) {
-   //          $appOptions[$key] += 1;
-   //       }
-   //    }
-   // }
+   $allResults = [];
+   while(!feof($resultsFile)) {
+      $line = fgets($resultsFile);
+      array_push($allResults, $line);
+      foreach ($appOptions as $key => $value) {
+         if (stripos($line, $key) > 0) {
+            $appOptions[$key] += 1;
+         }
+      }
+   }
    fclose($resultsFile);
    echo "closed the file<br>";
 ?>
@@ -42,6 +42,13 @@
 
    <body>
       <div>
+         <?php if (isset($message)) { ?>
+         <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+               <p><?php echo $message ?></p>
+            </div>
+         </div>
+         <?php } ?>
          <div class="row">
             <div class="col-md-10 col-md-offset-1" style="background:lightgrey;border:2px solid;border-radius:10px;padding:10px;">
                <?php if (!$_SESSION['voted']) { ?>
