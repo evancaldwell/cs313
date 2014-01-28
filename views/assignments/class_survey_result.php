@@ -1,6 +1,6 @@
 <?php
    session_start();
-   $appOptions = ['writing' => 0,'freeapp' => 0,'funny' => 0,'university' => 0,'list' => 0,'learning' => 0,'mosaic' => 0];
+   $appOptions = array('writing' => 0,'freeapp' => 0,'funny' => 0,'university' => 0,'list' => 0,'learning' => 0,'mosaic' => 0);
    try {
       $resultsFile = fopen("survey_results.txt", "a+") or $message = exit("Unable to open file!");
 
