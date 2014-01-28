@@ -4,6 +4,17 @@ body {
 	color: black;
 }
 
+/* ======== Header Styles =========== */
+
+.title h1 {
+	float: left;
+}
+
+#subtitle {
+	margin: 36px 20px 0;
+	float: left;
+}
+
 /* ======== Home Page Styles ======== */
 
 #home-wrapper {

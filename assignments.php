@@ -7,6 +7,7 @@ session_start();
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/head.php'; ?>
 	<body>
 		<div class="container">
+			<?php include("modules/main-menu.php");?>
 			<?php include("modules/header.php");?>	
 			<main id="main">
 				<div class="row">

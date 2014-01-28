@@ -16,10 +16,10 @@ session_start();
 							<a href="assignments.php">Assignments&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
 						</div>
 						<div id="rad2" class="radial-div">
-							<a href="app_home.php">App&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+							<a href="/app/index.php">App&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
 						</div>
 						<div id="rad3" class="radial-div">
-							<a href="#"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;About Me</a>
+							<a href="about.php"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;About Me</a>
 						</div>
 						<div id="rad4" class="radial-div">
 							<a href="#"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Blog</a>

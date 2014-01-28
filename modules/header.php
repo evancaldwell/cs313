@@ -2,7 +2,7 @@
 // require_once $_SERVER['DOCUMENT_ROOT']."/conn/connAdmin.php";
 ?>
 <div id="header" class="row">
-	<div class="col-md-3">
+	<div class="col-md-5">
 		<div class="logo">
 			<img src="" alt="">
 		</div>

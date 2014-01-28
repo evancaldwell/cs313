@@ -36,7 +36,7 @@ if (isset($_SESSION["voted"])) {
 						<input type="radio" name="app" value="mosaic">An app that lets me make a mosaic from my photos to share with friends/family<br>
 					</fieldset>
 					<h3>Comments: </h3>
-					<textarea name="comments" rows="15" cols="50"	 placeholder="Anything to add?"></textarea><br>
+					<textarea name="comments" class="form-control" rows="15" cols="50"	 placeholder="Anything to add?"></textarea><br>
 					<input type="submit" name="submit"><br>
 					<input type="hidden" name="action" value="submitSurvey">
 				</form>
