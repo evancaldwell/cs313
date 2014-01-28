@@ -21,7 +21,7 @@
          }
       }
 
-      $allResults = [];
+      $allResults = array();
       while(!feof($resultsFile)) {
          $line = fgets($resultsFile);
          array_push($allResults, $line);
