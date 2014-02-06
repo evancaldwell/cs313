@@ -1,6 +1,49 @@
 
-
 .main-component {
 	background: white;
 	border: solid 1px;
+	border-radius: 2px;
+	width: auto;
+	float: left;
+	padding: 10px;
+	margin: 10px;
+}
+
+#menu-bar {
+	background: #333333;
+    color: #FFFFFF;
+    height: 40px;
+    padding: 5px 20px;
+}
+
+#menu-bar ul {
+	float: right;
+}
+
+#menu-bar li {
+	display: inline;
+	padding: 0 5px 17px;
+}
+
+.dropdown:hover {
+	background: gray;
+    color: white;
+    padding: 0 5px 17px;
+}
+
+.dropdown > div {
+    display: none;
+}
+
+.dropdown:hover > div {
+    background: -moz-linear-gradient(center top , #EFEFEF 0%, #BBBBBB 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 10px 0 10px 10px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.7);
+    color: #000000;
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    z-index: 10;
 }

@@ -1,7 +1,78 @@
+/* ======== General Styles =========== */
+
 body {
 	background: url("/img/bkgrd-txtr-offwhite.jpg");
 	/*TODO: color override is not working*/
 	color: black;
+}
+
+#footer {
+	background: #333333;
+	border-radius: 10px 10px 0 0;
+	bottom: 0;
+	color: #FFFFFF;
+	position: fixed;
+	width: inherit;
+}
+
+.content-block {
+    background: white;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+
+/* ======== Menu Bar Styles =========== */
+
+#main-menu {
+	float: right;
+}
+
+#main-menu ul a {
+	color: white;
+	border-radius: 0 0 10px 10px;
+	padding: 15px;
+	border-bottom: 1px solid;
+}
+
+#main-menu ul a:hover { /* TODO: add a colum extending out the bottom of menu result that falls behind everything else, has a brighter color in the same family and has a glow effect, and maybe a transition effect (oozing paint, striking light) */
+	padding: 25px 15px;
+}
+
+#main-menu  ul li {
+	display: inline;
+}
+
+#main-menu ul a:nth-child(1) {
+	background: #91883C;
+}
+
+#main-menu ul a:nth-child(2) {
+	background: #1A6273;
+}
+
+#main-menu ul a:nth-child(3) {
+	background: #7D2410;
+}
+
+#main-menu ul a:nth-child(4) {
+	background: #80533D;
+}
+
+#main-menu ul a:nth-child(5) {
+	background: #1A3E5E;
+}
+
+#menu-stripe {
+	background: lightgrey;
+    display: none;
+    height: 10px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 10px;
+    z-index: -1;
 }
 
 /* ======== Header Styles =========== */
@@ -32,7 +103,7 @@ body {
 	/*display: none;*/
 }
 
-.radial-div {
+.radial-div { /* TODO: create an effect of something extending from the radial on hover */
 	background: transparent;
 	margin: 5px;
 	position: absolute;

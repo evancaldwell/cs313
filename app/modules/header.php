@@ -4,13 +4,13 @@ $dir = sys_get_temp_dir();
 session_save_path($dir);
 ?>
 <div id="header" class="row">
-	<div class="col-md-5">
+	<div class="col-md-12">
 		<div class="logo">
 			<img src="" alt="">
 		</div>
 		<div class="title">
-			<h1>Evan Caldwell</h1>
-			<p id="subtitle">CS313 worksite</p>
+			<h1>ScribeSketch</h1>
+			<p id="subtitle">Write... Simply... When ever... Where ever</p>
 		</div>
 	</div>
 </div>

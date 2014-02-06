@@ -51,3 +51,49 @@ function radialFormat(txt) {
   homeAngls[0].style.top = hwHeight/2*-0.45 + "px";
   homeAngls[1].style.top = hwHeight/2*.45 + parseFloat(homeAngls[1].style.height) + "px";
 }
+
+function menuStripe(elem) {
+  elem.style.paddingBottom = '25px';
+  var elemWidth = elem.offsetWidth;
+  var elemLeft = elem.offsetLeft;
+  var bColor = window.getComputedStyle(elem).backgroundColor;
+  var stripe = document.getElementById('menu-stripe');  
+  stripe.style.backgroundColor = bColor;
+  stripe.style.opacity = 0.65;
+  stripe.style.width = (elemWidth - 10) + "px"; 
+  stripe.style.left = (elemLeft + 5) + "px";
+  stripe.style.height = document.documentElement.clientHeight + "px";
+  stripe.style.boxShadow = "0px, 2px, 10px " + bColor; // TODO: this is not working for some reason
+  stripe.style.display = 'block';
+  var some = 0;
+}
+
+function menuUnstripe(elem) {
+  elem.style.padding='15px';
+  var stripe = document.getElementById('menu-stripe');
+  stripe.style.left = '0px';
+  stripe.style.background = 'gray';
+  stripe.style.height = '0px';
+  stripe.style.display = 'none';
+}
+
+//================= class work ==============================================
+
+function handleActorDropdown(dropdown) {
+  //alert("dropdown list changed to id " + dropdown.value);
+  $.get("get_movies.php", {actorId: dropdown.value}, handleResult(data))
+
+  var xmlRequest = new XMLHttpRequest();
+  xmlRequest.onreadystatechange() = function() {
+    if (xmlRequest.readyState == 4 && xmlRequest.status == 200) {
+      handleResult(xmlRequest.responseText);
+    }
+  };
+
+  xmlRequest.open("GET", "get_movies.php?actorId =" + dropdown.value, true);
+  xmlRequest.send();
+}
+
+function handleResult(result) {
+  alert("Got this back: "+result);
+}

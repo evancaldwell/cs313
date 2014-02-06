@@ -3,7 +3,10 @@
 	<meta charset="utf-8" />
 	<meta name="keywords" content="coding, html, code garden,css">
 	<meta name="description" content="latest information about html market">
-	<link href="/css/style.css" rel="stylesheet">
+	<link href="/app/css/style.css" rel="stylesheet">
+	<link href="/app/css/tile-style.css" rel="stylesheet">
+	<link href="/app/css/desk-style.css" rel="stylesheet">
+	<link href="/app/css/code-style.css" rel="stylesheet">
 	<!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 

@@ -6,22 +6,22 @@ session_start();
 <html>
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/head.php'; ?>
 	<body>
-		<div class="container">
-			<?php include("modules/main-menu.php");?>
-			<?php include("modules/header.php");?>	
-			<main id="main">
-				<div class="row">
-					<div class="col-md-12">
-						<h3>CS 313 Assignments</h3>
-						<ul>
-							<li><a href="/views/assignments/class_survey.php">Class Survey</a></li>
-						</ul>
+		<div class="wrap">
+			<div class="container">
+				<?php include("modules/main-menu.php");?>
+				<?php include("modules/header.php");?>	
+				<main id="main">
+					<div class="row">
+						<div class="col-md-12 content-block">
+							<h3>CS 313 Assignments</h3>
+							<ul>
+								<li><a href="/views/assignments/class_survey.php">Class Survey</a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
-			</main>
-			<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
+				</main>
+				<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
+			</div>
 		</div>
-
-		
 	</body>
 </html>
