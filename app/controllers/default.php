@@ -1,7 +1,7 @@
 <?php
 session_start();
 // bring in the model and library
-require $_SERVER['DOCUMENT_ROOT']."/app/models/users.php";
+require "../models/users.php";
 require $_SERVER['DOCUMENT_ROOT']."/library/library.php";
 
 if (isset($_GET['action'])) { //**** need to change this to pull the hidden fields

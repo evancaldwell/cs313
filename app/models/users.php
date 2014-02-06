@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/conn/connAdmin.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/app/models/conn_admin.php";
     
 function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip) {
     // parameters are the feilds of the form that we want to insert into the db
@@ -21,20 +21,30 @@ function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $ci
         // use the prepared statement by binding/matching the feilds from the form - passed 
         // in via the parameters - to the values in our sql query
         $stmt = $db->prepare($sql);
+        echo "prepared<br>";
         $stmt->bindValue(':email', $email);
+        echo "bind email<br>";
         $stmt->bindValue(':fname', $fname);
+        echo "bind fname<br>";
         $stmt->bindValue(':lname', $lname);
+        echo "bind lname<br>";
         $stmt->bindValue(':phone', $phone);
+        echo "bind phone<br>";
         $stmt->bindValue(':addr1', $addr1);
+        echo "bind addr1<br>";
         $stmt->bindValue(':addr2', $addr2);
+        echo "bind addr2<br>";
         $stmt->bindValue(':city', $city);
+        echo "bind city<br>";
         $stmt->bindValue(':state', $state);
+        echo "bind state<br>";
         $stmt->bindValue(':zip', $zip);
+        echo "bind zip<br>";
         $stmt->execute();
+        echo "executed<br>";
         $insertId = $db->lastInsertId(); // get and return the last ID that was generated
         $stmt->closeCursor();
     } catch (PDOException $e) {
-        echo "error: ".$e->getMessage();
         // $error_message = $e->getMessage();
         // display_db_error($error_message);
         return 0;
