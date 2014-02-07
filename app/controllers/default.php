@@ -10,6 +10,16 @@ if (isset($_GET['action'])) { //**** need to change this to pull the hidden fiel
     $action = $_POST['action'];
 }
 
+$users1 = getUsers1();
+echo var_dump($users1);
+$testDB = testDB();
+echo "DB test: ".$testDB."<br>";
+$testDBq = testDBq();
+echo "DBq test: ".var_dump($testDBq)."<br>";
+
+$emailTest = getEmail('dawg3tt@gmail.com');
+echo "email test: ".$emailTest."<br>";
+
 switch ($action) {
 	case 'register':
 		$email = valEmail($_POST['email']);
