@@ -5,9 +5,9 @@
         if(!$_SESSION['loggedin']){
         ?>
             <li class="dropdown">
-                <a href="../controllers/default.php?action=registerView">Register</a>
+                <a href="../controllers/users.php?action=registerView">Register</a>
                 <div>
-                    <form action="/app/controllers/default.php" method="POST">
+                    <form action="/app/controllers/users.php" method="POST">
                         <fieldset>
                         <input type="text" name="email" placeholder="Email">
                         <input type="password" name="pass1" id="pass1" placeholder="Password">
@@ -38,7 +38,7 @@
                     //$loginForm = getSnippet('loginForm');
                     //echo $loginForm[0];
                     ?>-->
-                    <form action="/contollers/default.php" method="POST">
+                    <form action="/contollers/users.php" method="POST">
                         <input type="text" name="email" placeholder="email">
                         <input type="password" name="password" placeholder="password">
                         <input type="submit" value="Login">

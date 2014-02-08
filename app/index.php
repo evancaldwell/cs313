@@ -1,6 +1,13 @@
 <?php 
 // Create or access the session
-$_SESSION['loggedin'] = false;
+session_start();
+
+require 'models/blocks.php';
+
+$_SESSION['id'] = 1;
+
+$projects = getProjects($_SESSION['id']);
+$chapters = getChapters($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,23 +20,46 @@ $_SESSION['loggedin'] = false;
 				<div class="col-md-12"><?php if (isset($message)) {echo $message;} ?></div>
 			</div>
 			<main id="main">
-				<section id="character-sketches" class="main-component">character sketches will go here</section>
-				<section id="block-input" class="main-component">
-					<form action="default.php">
-						<h4>Add a new block of writing:</h4>
-						<textarea name="newBlock" id="new-block" cols="70" rows="10"></textarea>
-						<input type="submit" value="Add Block">
-					</form>
-				</section>
-				<section id="timeline" class="main-component">timeline view goes here</section>
-				<section id="chapters" class="main-component">
-					<h4>Chapter List</h4>
-					<ul>
-						<li>Chapter 1<span class="chpt-block-cnt">&nbsp;:3</span></li>
-						<li>Chapter 2<span class="chpt-block-cnt">&nbsp;:12</span></li>
-						<li>Chapter 3<span class="chpt-block-cnt">&nbsp;:1</span></li>
-					</ul>
-				</section>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-10">
+						<form action="controllers/blocks.php" method="POST" >
+							<select name="projects" id="project-select">
+								<?php foreach ($projects as $row) {
+									echo "<option value=\"".$row["id"]."\">".$row['title']."</option>\n";
+								} ?>
+							</select>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<section id="character-sketches" class="main-component">character sketches will go here</section>
+						<section id="block-input" class="main-component">
+							<form action="controllers/blocks.php" method="POST">
+								<h4>Add a new block of writing:</h4>
+								<textarea name="blockContent" id="new-block" cols="70" rows="10"></textarea><br>
+								<select name="chapter">
+									<?php foreach ($chapters as $row) {
+										echo "<option value=\"".$row["id"]."\">".$row['chapter']." - ".$row["title"]."</option>\n";
+									} ?>
+								</select>
+								<input type="submit" value="Add Block">
+								<input type="hidden" name="action" value="newBlock">
+							</form>
+						</section>
+						<section id="chapters" class="main-component">
+							<h4>Chapter List</h4>
+							<ul>
+								<?php
+									foreach ($chapters as $row) {
+										echo '<li><a href="controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].': #</a></li>';
+									}
+								?>
+							</ul>
+						</section>
+						<section id="timeline" class="main-component">timeline view goes here</section>
+					</div>
+				</div>
 			</main>
 			<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/footer.php'; ?>
 		</div>

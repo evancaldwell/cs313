@@ -1,43 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/app/models/conn_admin.php";
-
-function getUsers1() {
-    $mysqli = new mysqli("localhost", "php", "php-pass", "Scriptures");
-    if ($mysqli->connect_errno) {
-        echo "Failed to connect to mysql: ".$mysqli->connect_errno;
-    }
-
-    $results = $mysqli->query("SELECT * FROM users");
-    return $results;
-}
-
-function testDB() {
-    global $db;
-
-    // new data
-    $title = 'PHP Security';
-    $author = 'Jack Hijack';
-     
-    // query
-    $sql = "INSERT INTO test (title,author) VALUES (:title,:author)";
-    $q = $db->prepare($sql);
-    $q->execute(array(':author'=>$author,
-                      ':title'=>$title));
-    return $db->lastInsertId();
-
-}
-
-function testDBq() {
-    global $db;
-
-    $query = 'SELECT * FROM users';
-    
-    $stmnt = $db->prepare($query);
-    $stmnt->execute();
-    $result = $stmnt->fetch();
-    $stmnt->closeCursor();
-    return $result;
-}
     
 function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip) {
     // parameters are the feilds of the form that we want to insert into the db
@@ -49,7 +11,6 @@ function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $ci
     $flag = TRUE;
                 
     try {
-        echo "hit the users try in users model <br>";
         // the sql query ready to be turned into a prepared statement using the values
         $sql = 'INSERT INTO users
                     (email, f_name, l_name, phone, addr1, addr2, city, state, zip)
@@ -83,10 +44,9 @@ function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $ci
     
     if($flag) {
         try {
-            echo "hit the auth try in users model <br>";
             // the sql query ready to be turned into a prepared statement using the values
             $sql = 'INSERT INTO auth
-                        (id, password)
+                        (user_id, password)
                     VALUES
                         (:id, :password)';
                         
