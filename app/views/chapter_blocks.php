@@ -5,7 +5,7 @@ $_SESSION['id'] = 1;
 
 $projects = getProjects($_SESSION['id']);
 $chapters = getChapters($_SESSION['id']);
-$currentChapter = []; //TODO: get the current chapters info to display above the list of blocks
+//$currentChapter = []; //TODO: get the current chapters info to display above the list of blocks
 ?>
 <!DOCTYPE html>
 <html>
