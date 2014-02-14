@@ -10,9 +10,56 @@ if (isset($_GET['action'])) { //**** need to change this to pull the hidden fiel
     $action = $_POST['action'];
 }
 
+
+$userId = $_SESSION['id'];
+
 switch ($action) {
+	case 'newProject':
+		$title = $_POST['projectTitle'];
+		$description = $_POST['projectDesc'];
+
+		if(empty($title) || empty($description)) {
+            $message = "All fields are required, please fix any missing information";
+            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // exit;
+        } else if (!empty($title) || !empty($description)) {
+            $newProjId = addProject($userId, $title, $description);
+            if ($newProjId < 1) {
+            	$message = "There was a problemm adding the chapter to database.";
+            } else {
+            	$message = "Added your chapter, keep writing!";
+            	header('location:../index.php');
+            }
+        } else {
+            $message = "There was an error with the data in the form";
+        }
+
+		break;
+
+	case 'newChapter':
+		$projectId = 1; //TODO: this needs to be pulled dynamically
+		$chapterNum = $_POST['chapterNum'];
+		$chapterName = $_POST['chapterName'];
+
+		if(empty($chapterNum) || empty($chapterName)) {
+            $message = "All fields are required, please fix any missing information";
+            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // exit;
+        } else if (!empty($chapterNum) || !empty($chapterName)) {
+            $newChapId = addChapter($chapterNum, $chapterName, $projectId);
+            if ($newChapId < 1) {
+            	$message = "There was a problemm adding the chapter to database.";
+            } else {
+            	$message = "Added your chapter, keep writing!";
+            	header('location:../index.php');
+            }
+        } else {
+            $message = "There was an error with the data in the form";
+        }
+
+		break;
+
 	case 'newBlock':
-        $userId = $_SESSION['id'];
         $chapterId = $_POST['chapter'];
 		$blockContent = $_POST['blockContent'];
 
@@ -34,12 +81,38 @@ switch ($action) {
         }
 
 		break;
+
+    case 'newCharacter':
+        $projectId = $_POST['projectId']; //TODO: this needs to be pulled dynamically
+        $characterName = $_POST['characterName'];
+        $characterDesc = $_POST['characterDesc'];
+
+        if(empty($characterName) || empty($characterDesc)) {
+            $message = "All fields are required, please fix any missing information";
+            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // exit;
+        } else if (!empty($characterName) || !empty($characterDesc)) {
+            $newChartrId = addCharacter($characterName, $characterDesc, $projectId);
+            if ($newChartrId < 1) {
+                $message = "There was a problemm adding the chapter to database.";
+            } else {
+                $message = "Added your new character, keep writing!";
+                // header('location:../index.php');
+            }
+        } else {
+            $message = "There was an error with the data in the form";
+        }
+
+        break;
 	
 	case 'chapterBlocks':
-		$userId = $_SESSION['id'];
         $chapterId = $_GET['chapterId'];
 
         $blocks = getBlocks($userId, $chapterId);
+
+        if (!$blocks) {
+            $infoMessage = 'There were no blocks added to this chapter.';
+        }
 
         include '../views/chapter_blocks.php';
 		break;

@@ -11,18 +11,18 @@ $chapters = getChapters($_SESSION['id']);
 <html>
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/head.php'; ?>
 	<body>
-		<div id="container">
-			<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/menu_bar.php'; ?>
-			<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php'; ?>
-			<div class="row notification">
-				<div class="col-md-12"><?php if (isset($message)) {echo $message;} ?></div>
-			</div>
+		<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/menu_bar.php'; ?>
+		<div class="container">
+			<?php 
+				include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php';
+				include $_SERVER['DOCUMENT_ROOT'].'/app/modules/notifications.php';
+			?>
 			<main id="main">
 				<div class="row">
-					<div class="col-md-4 col-md-offset-8 select-bar">
+					<div class="col-md-4 col-md-offset-7 select-bar">
 						<p>Projects:</p>
 						<form action="controllers/blocks.php" method="POST" >
-							<select name="projects" id="project-select">
+							<select name="projects" id="project-select" class="form-control">
 								<?php foreach ($projects as $row) {
 									echo "<option value=\"".$row["id"]."\">".$row['title']."</option>\n";
 								} ?>
@@ -30,12 +30,15 @@ $chapters = getChapters($_SESSION['id']);
 						</form>
 						<p>Chapters:</p>
 						<form action="controllers/blocks.php" method="POST" >
-							<select name="chapters" id="chapter-select">
+							<select name="chapters" id="chapter-select" class="form-control">
 								<?php foreach ($chapters as $row) {
 									echo "<option value=\"".$row["id"]."\">".$row['chapter']." - ".$row["title"]."</option>\n";
 								} ?>
 							</select>
 						</form>
+					</div>
+					<div class="col-md-2">
+						<a href="../index.php" class="btn btn-default">Back</a>
 					</div>
 				</div>
 				<div class="row">
@@ -49,6 +52,7 @@ $chapters = getChapters($_SESSION['id']);
 					</div>
 				</div>
 			</main>
+			<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/footer.php'; ?>
 		</div>
 	</body>
 </html>

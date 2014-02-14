@@ -2,7 +2,7 @@
     <ul>
         <?php
         require_once $_SERVER['DOCUMENT_ROOT']."/library/library.php";
-        if(!$_SESSION['loggedin']){
+        if(!isset($_SESSION['loggedin'])) {
         ?>
             <li class="dropdown">
                 <a href="../controllers/users.php?action=registerView">Register</a>
@@ -10,7 +10,7 @@
                     <form action="/app/controllers/users.php" method="POST">
                         <fieldset>
                         <input type="text" name="email" placeholder="Email">
-                        <input type="password" name="pass1" id="pass1" placeholder="Password">
+                        <input type="password" name="pass" id="pass" placeholder="Password">
                         <input type="password" name="pass2" id="pass2" onkeyup="checkPass(); return false;" placeholder="Confirm Password">
                         <span id="pass-match-mssg"></span>
                         </fieldset>
@@ -38,7 +38,7 @@
                     //$loginForm = getSnippet('loginForm');
                     //echo $loginForm[0];
                     ?>-->
-                    <form action="/contollers/users.php" method="POST">
+                    <form action="/app/controllers/users.php" method="POST">
                         <input type="text" name="email" placeholder="email">
                         <input type="password" name="password" placeholder="password">
                         <input type="submit" value="Login">
@@ -49,8 +49,8 @@
         <?php } else { ?>
             <li><a href="****accountSettings.html">Welcome, <?php echo $_SESSION['fname'] ?></a></li>
             <li>|</li>
-            <li><a href="/people?action=logmeout">Logout</a></li>
-            <?php if($_SESSION['loggedin'] == true && $_SESSION['rights'] > 1): ?>
+            <li><a href="/app/controllers/users.php?action=logout">Logout</a></li>
+            <?php if($_SESSION['loggedin'] == true && $_SESSION['rights'] < 3): ?>
             <li><a href="/admin">Admin</a></li>
             <?php endif ?>
         <?php } ?>

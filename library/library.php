@@ -16,7 +16,7 @@ function valEmail($email) {
 }
 
 function hashPass($password) {
-    $password = crypt($_POST['pass1'], '$2a$07$saltmakemyhamburgeryum');
+    $password = crypt($password, '$2a$07$saltmakemyhamburgeryum');
     return $password;
 }
 

@@ -25,4 +25,50 @@ function checkPass() {
         message.style.color = badColor;
         message.innerHTML = "Passwords Do Not Match!"
     }
-}  
+}
+
+// $(function() {
+//     $("#project-select").change(switchProject);
+// });
+
+// function switchProject(dropdown) {
+//     alert("changed the project to: " + dropdown.serialize());
+
+//     $.get("views/character_sketches.php", {projectId: dropdown.value}, function(data) {
+//     $("#character-sketches").html(data);
+//     alert("got this back from php" + data);
+//     });
+// }
+
+
+$('select').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    $.get("views/block-input.php", {projectId: valueSelected}, function(data) {
+        $("#block-input").html(data);
+    });
+    $.get("views/character_sketches.php", {projectId: valueSelected}, function(data) {
+        $("#character-sketches").html(data);
+    });
+    $.get("views/chapters.php", {projectId: valueSelected}, function(data) {
+        $("#chapters").html(data);
+    });
+});
+
+// this is the id of the form
+$("#new-character").submit(function() {
+    alert('hit the jquery submit');
+    var url = "../views/character_sketches.php"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#new-character").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+         });
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+});

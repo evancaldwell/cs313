@@ -101,9 +101,9 @@ function loginUser($email, $password) {
     global $db;
     
     try {
-        $sql = 'SELECT id, f_name, l_name, email, password
-            FROM users INNER JOIN auth ON users.id = auth.id
-            WHERE email = :email AND password = :password';
+        $sql = 'SELECT u.id, u.f_name, u.l_name, u.email, u.rights, u.active, a.password
+            FROM users u INNER JOIN auth a ON u.id = a.user_id
+            WHERE u.email = :email AND a.password = :password';
             // could also use "AND test.id = auth.id in place of the INNER JOIN
             
         $stmt = $db->prepare($sql);
@@ -111,7 +111,7 @@ function loginUser($email, $password) {
         $stmt->bindValue(':password', $password);
         $stmt->execute();
         $userInfo = $stmt->fetchAll();
-        $stmt = closeCursor;
+        $stmt->closeCursor();
         return $userInfo;
     } catch (Exception $e) {
         // handle exception
@@ -128,7 +128,7 @@ function getUsers($userId) {
             $stmt->bindValue(':userId', $userId); 	
             $stmt->execute();
             $userList = $stmt->fetchAll();
-            $stmt = closeCursor;
+            $stmt->closeCursor();
             return $userList;
         } catch (Exception $e) {
             // handle exception
