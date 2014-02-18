@@ -50,7 +50,7 @@ $characters = getCharacters($_SESSION['id'], $projectId=1);
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-4">
 						<section id="character-sketches" class="main-component">
 							<h4>Characters</h4>
 							<ul>
@@ -65,26 +65,13 @@ $characters = getCharacters($_SESSION['id'], $projectId=1);
 								<div>
 									<form id="new-character">
 										<input type="text" class="form-control" name="characterName" placeholder="Name">
-										<textarea name="characterDesc" id="character-desc" class="form-control" rows="10"></textarea>
+										<textarea name="characterDesc" id="character-desc" class="form-control" rows="10" placeholder="Description"></textarea>
 										<input type="submit" class="btn btn-default" value="Add Character">
 										<input type="hidden" name="projectId" <?php echo 'value="'.$projectId.'"' ?>>
 										<input type="hidden" name="action" value="newCharacter">
 									</form>
 								</div>
 							</div>
-						</section>
-						<section id="block-input" class="main-component">
-							<form action="controllers/blocks.php" method="POST">
-								<h4>Add a new block of writing:</h4>
-								<textarea name="blockContent" id="new-block" class="form-control" cols="70" rows="10"></textarea><br>
-								<select name="chapter" id="block-chapter-select" class="form-control">
-									<?php foreach ($chapters as $row) {
-										echo '<option value="'.$row["id"].'">'.$row['chapter'].' - '.$row["title"].'</option>\n';
-									} ?>
-								</select>
-								<input type="submit" class="btn btn-default" value="Add Block">
-								<input type="hidden" name="action" value="newBlock">
-							</form>
 						</section>
 						<section id="chapters" class="main-component">
 							<h4>Chapter List</h4>
@@ -96,17 +83,33 @@ $characters = getCharacters($_SESSION['id'], $projectId=1);
 								?>
 							</ul>
 							<form action="controllers/blocks.php" method="POST">
-								<input type="number" size="3" class="form-control1" name="chapterNum" placeholder="#">
-								<input type="text" class="form-control1" name="chapterName" placeholder="Title">
+								<input type="number" size="3" class="form-control" name="chapterNum" placeholder="#">
+								<input type="text" class="form-control" name="chapterName" placeholder="Title">
 								<input type="submit" class="btn btn-default" value="Add Chapter">
 								<input type="hidden" name="action" value="newChapter">
 							</form>
 						</section>
-						<div class="row">
-							<div class="col-md-12">
-								<section id="timeline" class="main-component">timeline view goes here</section>
-							</div>
+					</div>
+					<div class="col-md-8">
+						<section id="block-input" class="main-component">
+							<form action="controllers/blocks.php" method="POST">
+								<h4>Add a new block of writing:</h4>
+								<textarea name="blockContent" id="new-block" class="form-control ckeditor" cols="70" rows="10"></textarea><br>
+								<select name="chapter" id="block-chapter-select" class="form-control">
+									<?php foreach ($chapters as $row) {
+										echo '<option value="'.$row["id"].'">'.$row['chapter'].' - '.$row["title"].'</option>\n';
+									} ?>
+								</select>
+								<input type="submit" class="btn btn-default" value="Add Block">
+								<input type="hidden" name="action" value="newBlock">
+							</form>
+						</section>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<section id="timeline" class="main-component">timeline view goes here</section>
 						</div>
+					</div>
 					</div>
 				</div>
 			</main>

@@ -19,8 +19,8 @@ $chapters = getChapters($_SESSION['id'], $projectId);
 	?>
 </ul>
 <form action="controllers/blocks.php" method="POST">
-	<input type="number" size="3" class="form-control1" name="chapterNum" placeholder="#">
-	<input type="text" class="form-control1" name="chapterName" placeholder="Title">
+	<input type="number" size="3" class="form-control" name="chapterNum" placeholder="#">
+	<input type="text" class="form-control" name="chapterName" placeholder="Title">
 	<input type="submit" class="btn btn-default" value="Add Chapter">
 	<input type="hidden" name="action" value="newChapter">
 </form>

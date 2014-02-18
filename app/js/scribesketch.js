@@ -1,3 +1,5 @@
+// Replace the <textarea class="editor1"> with a CKEditor instance, using default configuration.
+CKEDITOR.replace( 'new-block' );
 
 function checkPass() {
     //Store the password field objects into variables ...
@@ -27,21 +29,8 @@ function checkPass() {
     }
 }
 
-// $(function() {
-//     $("#project-select").change(switchProject);
-// });
 
-// function switchProject(dropdown) {
-//     alert("changed the project to: " + dropdown.serialize());
-
-//     $.get("views/character_sketches.php", {projectId: dropdown.value}, function(data) {
-//     $("#character-sketches").html(data);
-//     alert("got this back from php" + data);
-//     });
-// }
-
-
-$('select').on('change', function (e) {
+$('select').on('change', function (e) { //TODO: for some reason it is compounding ajax calls. first time calls just the four, second time 8...
     var optionSelected = $("option:selected", this);
     var valueSelected = this.value;
     $.get("views/block-input.php", {projectId: valueSelected}, function(data) {
