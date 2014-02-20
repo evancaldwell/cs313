@@ -7,5 +7,8 @@ session_save_path($dir);
 	<div class="logo">
 		<img src="" alt="">
 	</div>
-	<h1>ScribeSketch <small>Write Simply... When ever... Where ever</small></h1>
+	<h1>
+		<span class="logo-style-1 logo-style logo-text">Scribe</span><span class="logo-style-2 logo-style logo-text">Sketch</span>
+		<small>Write Simply... When ever... Where ever</small>
+	</h1>
 </div>

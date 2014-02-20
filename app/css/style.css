@@ -1,3 +1,28 @@
+.logo-text {
+    font-size: 150%;
+}
+
+.logo-style {
+    color: #DEE7FA;
+}
+
+.logo-style-1 {
+    font-family: 'Indie Flower', cursive;
+}
+
+.logo-style-2 {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.8em;
+}
+
+.solid-bk {
+    background: #384FFF;
+}
+
+a.glyphicon {
+    padding-right: 1.7em;
+}
+
 #footer {
     bottom: 0;
     position: fixed;
@@ -14,7 +39,7 @@
 	background: white;
 	border: solid 1px;
 	border-radius: 5px;
-	width: auto;
+	width: 100%;
 	float: left;
 	padding: 15px;
 	margin: 10px;
@@ -76,6 +101,10 @@
 
 .select-bar p {
     float: left;
+}
+
+.project-bar {
+    background: white;
 }
 
 .project-bar div, .project-bar form {

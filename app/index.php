@@ -4,18 +4,19 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require 'models/blocks.php';
+require_once 'models/users.php';
 
 $_SESSION['id'] = 1;
-
-$projects = getProjects($_SESSION['id']);
-$chapters = getChapters($_SESSION['id'], $projectId=1);
-$characters = getCharacters($_SESSION['id'], $projectId=1);
+if (isset($_SESSION['loggedin'])) {
+	if ($_SESSION['loggedin'] == true) {
+		header('location: home.php');
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/head.php'; ?>
-	<body>
+	<body class="solid-bk">
 		<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/menu_bar.php'; ?>
 		<div class="container">
 			<?php 
@@ -25,91 +26,33 @@ $characters = getCharacters($_SESSION['id'], $projectId=1);
 
 			<main id="main">
 				<div class="row">
-					<div class="col-md-2 col-md-offset-9">
-						<form action="controllers/blocks.php" method="POST" class="form-inline">
-							<select name="projects" id="project-select" class="form-control">
-								<?php foreach ($projects as $row) {
-									echo '<option id="project"'.$row["id"].'" value="'.$row["id"].'">'.$row['title'].'</option>\n';
-								} ?>
-							</select>
-						</form>
-					</div>
-					<div class="col-md-1">
-						<!-- TODO: consider making this a modal-->
-						<div class="dropdown">
-							<a href="#" class="glyphicon glyphicon-plus btn default-btn"></a>
-							<div>
-								<form action="controllers/blocks.php" method="POST">
-									<input type="text" name="projectTitle" placeholder="Project Title">
-									<input type="text" name="projectDesc" placeholder="Project Description">
-									<input type="submit" value="Add Project">
-									<input type="hidden" name="action" value="newProject">
-								</form>
-							</div>
-						</div>
+					<div class="col-md-2 col-md-offset-5">
+						<h1><span class="logo-style-1 logo-style">Sign</span> <span class="logo-style-2 logo-style">Up</span></h1>
 					</div>
 				</div>
+				<br>
 				<div class="row">
-					<div class="col-md-4">
-						<section id="character-sketches" class="main-component">
-							<h4>Characters</h4>
-							<ul>
-								<?php // TODO: this will eventually need to be an ajax call, include a pic and have some different user interface
-									foreach ($characters as $row) {
-										echo '<li><a href="controllers/blocks.php?action=characterDetails&&characterId='.$row['id'].'">'.$row['name'].'</a></li>';
-									}
-								?>
-							</ul>
-							<div class="dropdown dropdown-left dropdown-textarea">
-								<a href="#" class="glyphicon glyphicon-plus btn default-btn"></a>
-								<div>
-									<form id="new-character">
-										<input type="text" class="form-control" name="characterName" placeholder="Name">
-										<textarea name="characterDesc" id="character-desc" class="form-control" rows="10" placeholder="Description"></textarea>
-										<input type="submit" class="btn btn-default" value="Add Character">
-										<input type="hidden" name="projectId" <?php echo 'value="'.$projectId.'"' ?>>
-										<input type="hidden" name="action" value="newCharacter">
-									</form>
-								</div>
-							</div>
-						</section>
-						<section id="chapters" class="main-component">
-							<h4>Chapter List</h4>
-							<ul>
-								<?php
-									foreach ($chapters as $row) {
-										echo '<li><a href="controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].': #</a></li>';
-									}
-								?>
-							</ul>
-							<form action="controllers/blocks.php" method="POST">
-								<input type="number" size="3" class="form-control" name="chapterNum" placeholder="#">
-								<input type="text" class="form-control" name="chapterName" placeholder="Title">
-								<input type="submit" class="btn btn-default" value="Add Chapter">
-								<input type="hidden" name="action" value="newChapter">
-							</form>
-						</section>
-					</div>
-					<div class="col-md-8">
-						<section id="block-input" class="main-component">
-							<form action="controllers/blocks.php" method="POST">
-								<h4>Add a new block of writing:</h4>
-								<textarea name="blockContent" id="new-block" class="form-control ckeditor" cols="70" rows="10"></textarea><br>
-								<select name="chapter" id="block-chapter-select" class="form-control">
-									<?php foreach ($chapters as $row) {
-										echo '<option value="'.$row["id"].'">'.$row['chapter'].' - '.$row["title"].'</option>\n';
-									} ?>
-								</select>
-								<input type="submit" class="btn btn-default" value="Add Block">
-								<input type="hidden" name="action" value="newBlock">
-							</form>
-						</section>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<section id="timeline" class="main-component">timeline view goes here</section>
-						</div>
-					</div>
+					<div class="col-md-4 col-md-offset-4">
+						<form action="controllers/users.php" method="POST">
+	                        <fieldset>
+	                        <input type="text" class="form-control" name="email" placeholder="Email" required>
+	                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Password" required>
+	                        <input type="password" class="form-control" name="pass2" id="pass2" onkeyup="checkPass(); return false;" placeholder="Confirm Password" required>
+	                        <span id="pass-match-mssg"></span>
+	                        </fieldset>
+	                        <fieldset>
+	                        <input type="text" class="form-control" name="fname" placeholder="First Name">
+	                        <input type="text" class="form-control" name="lname" placeholder="Last Name">
+	                        <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+	                        <input type="text" class="form-control" name="addr1" placeholder="Street Address">
+	                        <input type="text" class="form-control" name="addr2" placeholder="Apt. #...">
+	                        <input type="text" class="form-control" name="city" placeholder="City">
+	                        <input type="text" class="form-control" name="state" placeholder="State">
+	                        <input type="text" class="form-control" name="zip" placeholder="Zip">
+	                        </fieldset>
+	                        <input type="submit" class="btn default-btn" value="Register">
+	                        <input type="hidden" name="action" value="register">
+	                    </form>
 					</div>
 				</div>
 			</main>

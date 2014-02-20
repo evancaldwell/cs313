@@ -42,17 +42,16 @@ $characters = getCharacters($_SESSION['id'], $projectId);
 		}
 	?>
 </ul>
-<div class="dropdown dropdown-left dropdown-textarea">
-	<a href="#" class="glyphicon glyphicon-plus btn default-btn"></a>
-	<div>
+<div>
+	<a href="#" class="glyphicon glyphicon-plus btn btn-default expander"></a>
+	<div class="expand">
 		<form id="new-character">
 			<input type="text" class="form-control" name="characterName" placeholder="Name">
-			<textarea name="characterDesc" id="character-desc" class="form-control" rows="10"></textarea>
+			<textarea name="characterDesc" id="character-desc" class="form-control" rows="10" placeholder="Description"></textarea>
 			<input type="submit" class="btn btn-default" value="Add Character">
 			<input type="hidden" name="projectId" <?php echo 'value="'.$projectId.'"' ?>>
 			<input type="hidden" name="action" value="newCharacter">
 		</form>
 	</div>
-</div>
 <p><?php echo 'projectId: '.$projectId ?></p>
 <script type="text/javascript" src="/app/js/scribesketch.js"></script>

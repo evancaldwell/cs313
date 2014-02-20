@@ -52,7 +52,7 @@ switch ($action) {
             $warningMessage = "There was an error with the data in the form";
         }
 
-        include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/app/home.php';
 		break;
 
 	case 'login': //TODO: somehow getting an error and landing on /controllers/default.php instead of /app/controllers/default.php
@@ -80,7 +80,8 @@ switch ($action) {
                 // direct the user back to the main page
                 // header('location:/app/index.php');
                 $successMessage = 'You have been logged in! ';
-                include '../index.php';
+                // include '../index.php';
+                header('location: /app/home.php');
             } else {
                 //include 'view.php'; //**** actually need to send them to some other view - like product browsing
                 // header('location:/app/index.php');

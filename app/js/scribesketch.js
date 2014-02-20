@@ -1,9 +1,9 @@
 // Replace the <textarea class="editor1"> with a CKEditor instance, using default configuration.
-CKEDITOR.replace( 'new-block' );
+// CKEDITOR.replace( 'new-block' );
 
 function checkPass() {
     //Store the password field objects into variables ...
-    var pass1 = document.getElementById('pass1');
+    var pass1 = document.getElementById('pass');
     var pass2 = document.getElementById('pass2');
     //Store the Confimation Message Object ...
     var message = document.getElementById('pass-match-mssg');
@@ -29,6 +29,17 @@ function checkPass() {
     }
 }
 
+$(function() {
+  jQuery(".expand").hide();
+  //toggle the componenet with class msg_body
+  jQuery(".expander").click(function(e)
+  {
+    jQuery(this).next(".expand").slideToggle(500);
+
+    // Cancel the default action
+    e.preventDefault();
+  });
+});
 
 $('select').on('change', function (e) { //TODO: for some reason it is compounding ajax calls. first time calls just the four, second time 8...
     var optionSelected = $("option:selected", this);
