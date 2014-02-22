@@ -29,9 +29,11 @@ function checkPass() {
     }
 }
 
-$(function() {
+
+
+$(function() { // this is the same as $(document).ready(function(){});
   jQuery(".expand").hide();
-  //toggle the componenet with class msg_body
+  //toggle the componenet with class expander
   jQuery(".expander").click(function(e)
   {
     jQuery(this).next(".expand").slideToggle(500);
@@ -39,36 +41,56 @@ $(function() {
     // Cancel the default action
     e.preventDefault();
   });
-});
 
-$('select').on('change', function (e) { //TODO: for some reason it is compounding ajax calls. first time calls just the four, second time 8...
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-    $.get("views/block-input.php", {projectId: valueSelected}, function(data) {
+  $(".project-tile").click(function(){
+    // get the projectId from the div that was clicked
+    var projectId = $(this).attr("id");
+    // hide the project tiles div
+    $("#project-tiles").hide();
+    // pull in the three main components
+    $.get("views/block-input.php", {projectId: projectId}, function(data) {
         $("#block-input").html(data);
     });
-    $.get("views/character_sketches.php", {projectId: valueSelected}, function(data) {
+    $.get("views/character_sketches.php", {projectId: projectId}, function(data) {
         $("#character-sketches").html(data);
     });
-    $.get("views/chapters.php", {projectId: valueSelected}, function(data) {
+    $.get("views/chapters.php", {projectId: projectId}, function(data) {
         $("#chapters").html(data);
     });
-});
+    // then display the main-dash div
+    $("#main-dash").show();
+  });
 
-// this is the id of the form
-$("#new-character").submit(function() {
-    alert('hit the jquery submit');
-    var url = "../views/character_sketches.php"; // the script where you handle the form input.
+  $('select').on('change', function (e) { //TODO: for some reason it is compounding ajax calls. first time calls just the four, second time 8...
+      var optionSelected = $("option:selected", this);
+      var valueSelected = this.value;
+      $.get("views/block-input.php", {projectId: valueSelected}, function(data) {
+          $("#block-input").html(data);
+      });
+      $.get("views/character_sketches.php", {projectId: valueSelected}, function(data) {
+          $("#character-sketches").html(data);
+      });
+      $.get("views/chapters.php", {projectId: valueSelected}, function(data) {
+          $("#chapters").html(data);
+      });
+  });
 
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#new-character").serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-               alert(data); // show response from the php script.
-           }
-         });
+  // this is the id of the form
+  $("#new-character").submit(function() {
+      alert('hit the jquery submit');
+      var url = "../views/character_sketches.php"; // the script where you handle the form input.
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+      $.ajax({
+             type: "POST",
+             url: url,
+             data: $("#new-character").serialize(), // serializes the form's elements.
+             success: function(data)
+             {
+                 alert(data); // show response from the php script.
+             }
+           });
+
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+  });
+
 });

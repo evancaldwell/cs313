@@ -99,12 +99,11 @@ function getEmail($email) {
 
 function loginUser($email, $password) {
     global $db;
-    
+
     try {
         $sql = 'SELECT u.id, u.f_name, u.l_name, u.email, u.rights, u.active, a.password
             FROM users u INNER JOIN auth a ON u.id = a.user_id
             WHERE u.email = :email AND a.password = :password';
-            // could also use "AND test.id = auth.id in place of the INNER JOIN
             
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $email);

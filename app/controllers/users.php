@@ -39,13 +39,13 @@ switch ($action) {
             } else {
             	$successMessage = "Thank You for Registering!"; //**** this should actually be another view with either a timed redirection or suggestions of next steps
                 // login the user
-                $_SESSION['id'] = $usrInfo[0]['id'];
-                $_SESSION['fname'] = $usrInfo[0]['fname'];
-                $_SESSION['lname'] = $usrInfo[0]['lname'];
-                $_SESSION['email'] = $usrInfo[0]['email'];
-                $_SESSION['rights'] = $usrInfo[0]['rights'];
-                $_SESSION['password'] = $usrInfo[0]['password'];
-                $_SESSION['active'] = $usrInfo[0]['active'];
+                $_SESSION['id'] = $userInfo[0]['id'];
+                $_SESSION['fname'] = $userInfo[0]['fname'];
+                $_SESSION['lname'] = $userInfo[0]['lname'];
+                $_SESSION['email'] = $userInfo[0]['email'];
+                $_SESSION['rights'] = $userInfo[0]['rights'];
+                $_SESSION['password'] = $userInfo[0]['password'];
+                $_SESSION['active'] = $userInfo[0]['active'];
                 $_SESSION['loggedin'] = true;
             }
         } else {
@@ -62,35 +62,33 @@ switch ($action) {
         
         if (empty($email) || empty($password)) {
             $warningMessage = 'Sorry, the email and/or password is incorrect. Please confirm and try again';
+            header('location: /app/index.php?warningMessage='.$warningMessage);
             exit;
         }
-        $usrInfo = loginUser($email, $password);
-        if(!empty($usrInfo)){
+        echo $email." | ".$password;
+        $userInfo = loginUser($email, $password);
+        print_r($userInfo);
+        if(!empty($userInfo)){
             // login the user
-            $_SESSION['id'] = $usrInfo[0]['id'];
-            $_SESSION['fname'] = $usrInfo[0]['f_name'];
-            $_SESSION['lname'] = $usrInfo[0]['l_name'];
-            $_SESSION['email'] = $usrInfo[0]['email'];
-            $_SESSION['rights'] = $usrInfo[0]['rights'];
-            $_SESSION['password'] = $usrInfo[0]['password'];
-            $_SESSION['active'] = $usrInfo[0]['active'];
+            $_SESSION['id'] = $userInfo[0]['id'];
+            $_SESSION['fname'] = $userInfo[0]['f_name'];
+            $_SESSION['lname'] = $userInfo[0]['l_name'];
+            $_SESSION['email'] = $userInfo[0]['email'];
+            $_SESSION['rights'] = $userInfo[0]['rights'];
+            $_SESSION['password'] = $userInfo[0]['password'];
+            $_SESSION['active'] = $userInfo[0]['active'];
             $_SESSION['loggedin'] = true;
             
-            if($usrInfo[0]['active'] == 1){
-                // direct the user back to the main page
-                // header('location:/app/index.php');
+            if($userInfo[0]['active'] == 1){
                 $successMessage = 'You have been logged in! ';
-                // include '../index.php';
-                header('location: /app/home.php');
+                header('location: /app/home.php?successMessage='.$successMessage);
             } else {
-                //include 'view.php'; //**** actually need to send them to some other view - like product browsing
-                // header('location:/app/index.php');
                 $warningMessage = 'There was a problem logging you in';
-                include '/app/index.php';
+                header('location:/app/index.php?warningMessage='.$warningMessage);
             }
         } else {
             $warningMessage = "Sorry, there was a problem with the login. Please try again";
-            //include 'view.php';
+            header('location: /app/index.php?warningMessage='.$warningMessage);
         }
 		break;
 

@@ -34,7 +34,7 @@ if(empty($characterName) || empty($characterDesc)) {
 
 $characters = getCharacters($_SESSION['id'], $projectId);
 ?>
-<h4>Characters</h4>
+<h4 class="dkstblue-txt">Characters</h4>
 <ul>
 	<?php // TODO: this will eventually need to be an ajax call, include a pic and have some different user interface
 		foreach ($characters as $row) {
@@ -53,5 +53,5 @@ $characters = getCharacters($_SESSION['id'], $projectId);
 			<input type="hidden" name="action" value="newCharacter">
 		</form>
 	</div>
+</div>
 <p><?php echo 'projectId: '.$projectId ?></p>
-<script type="text/javascript" src="/app/js/scribesketch.js"></script>

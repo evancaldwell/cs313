@@ -1,22 +1,61 @@
+/* ============ colors ========================= */
+.dark-bk {
+    background: #020307;
+}
+.dark-txt {
+    color: #020307;
+}
+.mainblue-bk {
+    background: #549ECF;
+}
+.mainblue-txt {
+    color: #549ECF;
+}
+.offwhite-bk {
+    background: #FDFDFD;
+}
+.offwhite-txt {
+    color: #FDFDFD;
+}
+.dkblue-bk {
+    background: #23547F;
+}
+.dkblue-txt {
+    color: #23547F;
+}
+.dkstblue-bk {
+    background: #223E49;
+}
+.dkstblue-txt {
+    color: #223E49;
+}
+
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.no-list-style > * {
+    list-style: none;
+}
+
+#page-header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    margin: 0 0 20px;
+    padding: 0 100px;
+}
+
 .logo-text {
     font-size: 150%;
 }
 
-.logo-style {
-    color: #DEE7FA;
-}
-
-.logo-style-1 {
+.scribe-font {
     font-family: 'Indie Flower', cursive;
 }
 
-.logo-style-2 {
+.sketch-font {
     font-family: 'Cabin Sketch', cursive;
-    font-size: 1.8em;
-}
-
-.solid-bk {
-    background: #384FFF;
+    /* font-size: 1.8em; */
 }
 
 a.glyphicon {
@@ -27,16 +66,20 @@ a.glyphicon {
     bottom: 0;
     position: fixed;
     width: inherit;
+    padding: 0 100px;
     z-index: -99;
 }
 
 /* TODO: have javascript dynamically create this based on the footer height */
 .footer-spacer {
-    height: 20px;
+    height: 30px;
+}
+
+#main-dash {
+    display: none;
 }
 
 .main-component {
-	background: white;
 	border: solid 1px;
 	border-radius: 5px;
 	width: 100%;
@@ -50,7 +93,6 @@ a.glyphicon {
 }
 
 #menu-bar {
-	background: #333333;
     color: #FFFFFF;
     height: 40px;
     padding: 5px 20px;
@@ -99,7 +141,7 @@ a.glyphicon {
     width: 300px;
 }
 
-.select-bar p {
+.select-bar {
     float: left;
 }
 

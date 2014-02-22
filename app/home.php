@@ -8,112 +8,85 @@ require 'models/blocks.php';
 
 $_SESSION['id'] = 1;
 
+// check to see if any notification messages have been passed to $_GET and then display the proper one
+if (isset($_GET['successMessage'])) {
+	$successMessage = $_GET['successMessage'];
+} elseif (isset($_GET['warningMessage'])) {
+	$warningMessage = $_GET['warningMessage'];
+} elseif (isset($_GET['dangerMessage'])) {
+	$dangerMessage = $_GET['dangerMessage'];
+} elseif (isset($_GET['infoMessage'])) {
+	$infoMessage = $_GET['infoMessage'];
+} elseif (isset($_GET['message'])) {
+	$infoMessage = $_GET['message'];
+}
+
 $projects = getProjects($_SESSION['id']);
-$chapters = getChapters($_SESSION['id'], $projectId=1);
-$characters = getCharacters($_SESSION['id'], $projectId=1);
 ?>
 <!DOCTYPE html>
 <html>
 	<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/head.php'; ?>
-	<body class="solid-bk">
+	<body class="mainblue-bk">
 		<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/menu_bar.php'; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php'; ?>
 		<div class="container">
 			<?php 
-				include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php';
+				// include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php';
 				include $_SERVER['DOCUMENT_ROOT'].'/app/modules/notifications.php';
 			?>
-
 			<main id="main">
-				<div class="row">
-					<div class="col-md-2 col-md-offset-8">
-						<form action="controllers/blocks.php" method="POST" class="form-inline">
-							<select name="projects" id="project-select" class="form-control">
-								<?php foreach ($projects as $row) {
-									echo '<option id="project"'.$row["id"].'" value="'.$row["id"].'">'.$row['title'].'</option>\n';
-								} ?>
-							</select>
-						</form>
-					</div>
-					<div class="col-md-2">
-						<div>
-							<a href="#" class="glyphicon glyphicon-plus btn btn-default expander"></a>
-							<div class="expand">
-								<form action="controllers/blocks.php" method="POST">
-									<input type="text" class="form-control" name="projectTitle" placeholder="Project Title">
-									<input type="text" class="form-control" name="projectDesc" placeholder="Project Description">
-									<input type="submit" class="btn default-btn" value="Add Project">
-									<input type="hidden" name="action" value="newProject">
-								</form>
+				<h1 class="sketch-font offwhite-txt">Select a Project:</h1>
+				<?php if (count($projects) > 1) { ?>
+					<div id="project-tiles" class="row">
+						<?php foreach ($projects as $project) { ?>
+							<div class="col-md-4">
+								<?php 
+								echo '<div id="'.$project['id'].'" class="main-component project-tile offwhite-bk cursor-pointer">';
+									echo $project['title'];
+								echo '</div>';
+								?>
 							</div>
+						<?php } ?>
+					</div>
+				<?php } else { ?>
+					<div>this is the else</div>
+				<?php } ?>
+				<div id="main-dash">
+					<div class="row">
+						<div class="col-md-2 col-md-offset-8">
+							<form action="controllers/blocks.php" method="POST" class="form-inline">
+								<select name="projects" id="project-select" class="form-control">
+									<?php foreach ($projects as $row) {
+										echo '<option id="project"'.$row["id"].'" value="'.$row["id"].'">'.$row['title'].'</option>\n';
+									} ?>
+								</select>
+							</form>
 						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<section id="character-sketches" class="main-component">
-							<h4>Characters</h4>
-							<ul>
-								<?php // TODO: this will eventually need to be an ajax call, include a pic and have some different user interface
-									foreach ($characters as $row) {
-										echo '<li><a href="controllers/blocks.php?action=characterDetails&&characterId='.$row['id'].'">'.$row['name'].'</a></li>';
-									}
-								?>
-							</ul>
-							<div>
-								<a href="#" class="glyphicon glyphicon-plus btn btn-default expander"></a>
-								<div class="expand">
-									<form id="new-character">
-										<input type="text" class="form-control" name="characterName" placeholder="Name">
-										<textarea name="characterDesc" id="character-desc" class="form-control" rows="10" placeholder="Description"></textarea>
-										<input type="submit" class="btn btn-default" value="Add Character">
-										<input type="hidden" name="projectId" <?php echo 'value="'.$projectId.'"' ?>>
-										<input type="hidden" name="action" value="newCharacter">
-									</form>
-								</div>
-							</div>
-						</section>
-						<section id="chapters" class="main-component">
-							<h4>Chapter List</h4>
-							<ul>
-								<?php
-									foreach ($chapters as $row) {
-										echo '<li><a href="controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].': #</a></li>';
-									}
-								?>
-							</ul>
+						<div class="col-md-2">
 							<div>
 								<a href="#" class="glyphicon glyphicon-plus btn btn-default expander"></a>
 								<div class="expand">
 									<form action="controllers/blocks.php" method="POST">
-										<input type="number" size="3" class="form-control" name="chapterNum" placeholder="Chapter #">
-										<input type="text" class="form-control" name="chapterName" placeholder="Title">
-										<input type="submit" class="btn btn-default" value="Add Chapter">
-										<input type="hidden" name="action" value="newChapter">
+										<input type="text" class="form-control" name="projectTitle" placeholder="Project Title">
+										<input type="text" class="form-control" name="projectDesc" placeholder="Project Description">
+										<input type="submit" class="btn default-btn" value="Add Project">
+										<input type="hidden" name="action" value="newProject">
 									</form>
 								</div>
 							</div>
-						</section>
-					</div>
-					<div class="col-md-8">
-						<section id="block-input" class="main-component">
-							<form action="controllers/blocks.php" method="POST">
-								<h4>Add a new block of writing:</h4>
-								<textarea name="blockContent" id="new-block" class="form-control ckeditor" cols="70" rows="10"></textarea><br>
-								<select name="chapter" id="block-chapter-select" class="form-control">
-									<?php foreach ($chapters as $row) {
-										echo '<option value="'.$row["id"].'">'.$row['chapter'].' - '.$row["title"].'</option>\n';
-									} ?>
-								</select>
-								<input type="submit" class="btn btn-default" value="Add Block">
-								<input type="hidden" name="action" value="newBlock">
-							</form>
-						</section>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<section id="timeline" class="main-component">timeline view goes here</section>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<section id="character-sketches" class="main-component offwhite-bk">
+							</section>
+							<section id="chapters" class="main-component offwhite-bk">
+							</section>
+						</div>
+						<div class="col-md-8">
+							<section id="block-input" class="main-component offwhite-bk">
+							</section>
+						</div>
 					</div>
 				</div>
 			</main>

@@ -1,4 +1,4 @@
-<nav id="menu-bar">
+<nav id="menu-bar" class="dark-bk">
     <ul>
         <?php
         require_once $_SERVER['DOCUMENT_ROOT']."/library/library.php";

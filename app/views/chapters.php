@@ -10,7 +10,7 @@ $projectId = $_GET['projectId'];
 
 $chapters = getChapters($_SESSION['id'], $projectId);
 ?>
-<h4>Chapter List</h4>
+<h4 class="dkstblue-txt">Chapter List</h4>
 <ul>
 	<?php
 		foreach ($chapters as $row) {
@@ -18,10 +18,15 @@ $chapters = getChapters($_SESSION['id'], $projectId);
 		}
 	?>
 </ul>
-<form action="controllers/blocks.php" method="POST">
-	<input type="number" size="3" class="form-control" name="chapterNum" placeholder="#">
-	<input type="text" class="form-control" name="chapterName" placeholder="Title">
-	<input type="submit" class="btn btn-default" value="Add Chapter">
-	<input type="hidden" name="action" value="newChapter">
-</form>
+<div>
+	<a href="#" class="glyphicon glyphicon-plus btn btn-default expander"></a>
+	<div class="expand">
+		<form action="controllers/blocks.php" method="POST">
+			<input type="number" size="3" class="form-control" name="chapterNum" placeholder="Chapter #">
+			<input type="text" class="form-control" name="chapterName" placeholder="Title">
+			<input type="submit" class="btn btn-default" value="Add Chapter">
+			<input type="hidden" name="action" value="newChapter">
+		</form>
+	</div>
+</div>
 <p><?php echo 'projectId: '.$projectId ?></p>
