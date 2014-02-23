@@ -32,15 +32,15 @@ function checkPass() {
 
 
 $(function() { // this is the same as $(document).ready(function(){});
-  jQuery(".expand").hide();
-  //toggle the componenet with class expander
-  jQuery(".expander").click(function(e)
-  {
-    jQuery(this).next(".expand").slideToggle(500);
+  // jQuery(".expand").hide();
+  // //toggle the componenet with class expander
+  // jQuery(".expander").click(function(e)
+  // {
+  //   jQuery(this).next(".expand").slideToggle(500);
 
-    // Cancel the default action
-    e.preventDefault();
-  });
+  //   // Cancel the default action
+  //   e.preventDefault();
+  // });
 
   $(".project-tile").click(function(){
     // get the projectId from the div that was clicked

@@ -55,3 +55,16 @@ $characters = getCharacters($_SESSION['id'], $projectId);
 	</div>
 </div>
 <p><?php echo 'projectId: '.$projectId ?></p>
+<script>
+$(function() { // this is the same as $(document).ready(function(){});
+  jQuery(".expand").hide();
+  //toggle the componenet with class expander
+  jQuery(".expander").click(function(e)
+  {
+    jQuery(this).next(".expand").slideToggle(500);
+
+    // Cancel the default action
+    e.preventDefault();
+  });
+});
+</script>
