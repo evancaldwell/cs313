@@ -1,0 +1,214 @@
+/* ======== General Styles =========== */
+
+body {
+	background: url("/img/bkgrd-txtr-offwhite.jpg");
+	/*TODO: color override is not working*/
+	color: black;
+}
+
+#footer {
+	background: #333333;
+	border-radius: 10px 10px 0 0;
+	bottom: 0;
+	color: #FFFFFF;
+	position: fixed;
+	width: inherit;
+}
+
+.content-block {
+    background: white;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+
+/* ======== Menu Bar Styles =========== */
+
+#main-menu {
+	float: right;
+}
+
+#main-menu ul a {
+	color: white;
+	border-radius: 0 0 10px 10px;
+	padding: 15px;
+	border-bottom: 1px solid;
+}
+
+#main-menu ul a:hover { /* TODO: add a colum extending out the bottom of menu result that falls behind everything else, has a brighter color in the same family and has a glow effect, and maybe a transition effect (oozing paint, striking light) */
+	padding: 25px 15px;
+}
+
+#main-menu  ul li {
+	display: inline;
+}
+
+#main-menu ul a:nth-child(1) {
+	background: #91883C;
+}
+
+#main-menu ul a:nth-child(2) {
+	background: #1A6273;
+}
+
+#main-menu ul a:nth-child(3) {
+	background: #7D2410;
+}
+
+#main-menu ul a:nth-child(4) {
+	background: #80533D;
+}
+
+#main-menu ul a:nth-child(5) {
+	background: #1A3E5E;
+}
+
+#menu-stripe {
+	background: lightgrey;
+    display: none;
+    height: 10px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 10px;
+    z-index: -1;
+}
+
+/* ======== Header Styles =========== */
+
+.title h1 {
+	float: left;
+}
+
+#subtitle {
+	margin: 36px 20px 0;
+	float: left;
+}
+
+/* ======== Home Page Styles ======== */
+
+#home-wrapper {
+	background: transparent;
+	width: 95%;
+	border: 10px solid;
+	border-radius: 100px;
+	overflow: hidden;
+	position: relative;
+}
+
+#body-img {
+	position: absolute;
+	z-index: 1;
+	/*display: none;*/
+}
+
+.radial-div { /* TODO: create an effect of something extending from the radial on hover */
+	background: transparent;
+	margin: 5px;
+	position: absolute;
+	font-size: 50px;
+}
+
+/*.radial-div a:hover {
+	transform: scale(10%);
+}
+
+#rad1 a:hover > span, #rad2 a:hover > span {
+	transform: translate(50px);
+}
+
+#rad3 a:hover > span, #rad4 a:hover > span {
+	transform: translate(-50px);
+}*/
+
+#rad1 {
+	left: 675px;
+	transform: rotate(-25deg);
+	-webkit-transform: rotate(-25deg);
+	-moz-transform: rotate(-25deg);
+	text-align: left;
+	padding-left: 150px;
+}
+
+#rad2 {
+	left: 675px;
+	top: 700px;
+	transform: rotate(25deg);
+	-webkit-transform: rotate(25deg);
+	-moz-transform: rotate(25deg);
+	text-align: left;
+	padding-left: 150px;
+}
+
+#rad3 {
+	left: 475px;
+	transform: rotate(25deg);
+	-webkit-transform: rotate(25deg);
+	-moz-transform: rotate(25deg);
+	text-align: right;
+	padding-right: 150px;
+}
+
+#rad4 {
+	left: 475px;
+	top: 700px;
+	transform: rotate(-25deg);
+	-webkit-transform: rotate(-25deg);
+	-moz-transform: rotate(-25deg);
+	text-align: right;
+	padding-right: 150px;
+}
+
+#horiz-divider {
+	height: 20px;
+	position: absolute;
+	background: #333333;
+}
+
+.home-qtr {
+	position: absolute;
+	z-index: -1;
+}
+
+#hqtr1 {
+	background: #1A6273;
+}
+
+#hqtr2 {
+	background: #7D2410;
+}
+
+#hqtr3 {
+	background: #80533D;
+}
+
+#hqtr4 {
+	background: #1A3E5E;
+}
+
+.home-angle {
+    left: 278px;
+    position: absolute;
+    height:555.75px;
+    width: 555.75px;
+    transform: rotate(45deg) skew(20deg, 20deg);
+    -webkit-transform: rotate(45deg) skew(20deg, 20deg);
+    -moz-transform: rotate(45deg) skew(20deg, 20deg);
+}
+
+#hang-top {
+	background: #91883C;
+    top: -210px;
+}
+
+#hang-bottom {
+	background: #91883C;
+	top: 880px;
+}
+
+/* ======== Misc Assignments Styles =========== */
+
+#survey-results-table td {
+	padding: 0 15px;
+}
