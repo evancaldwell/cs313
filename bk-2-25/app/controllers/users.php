@@ -36,6 +36,8 @@ switch ($action) {
             $regResult = add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip);
             if ($regResult < 1) {
             	$warningMessage = "There was a problemm adding info to database.";
+                // $_SESSION['loggedin'] = false;
+                header('location:/app/index.php?warningMessage='.$warningMessage);
             } else {
                 // login the user
                 // $_SESSION['id'] = $userInfo['id'];
