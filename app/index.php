@@ -46,7 +46,7 @@ if (isset($_GET['successMessage'])) {
 				<br>
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
-						<form action="users.php" method="POST">
+						<form action="controllers/users.php" method="POST">
 	                        <fieldset>
 	                        	<input type="text" class="form-control" name="email" placeholder="Email" required>
 	                        	<input type="password" class="form-control" name="pass" id="pass" placeholder="Password" required>
