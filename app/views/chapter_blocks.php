@@ -4,10 +4,8 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-$_SESSION['id'] = 1;
-
-// $projects = getProjects($_SESSION['id']);
-// $chapters = getChapters($_SESSION['id'], $projectId=1);
+$projects = getProjects($_SESSION['id']);
+$chapters = getChapters($_SESSION['id'], $_SESSION['projectId']);
 //$currentChapter = []; //TODO: get the current chapters info to display above the list of blocks
 ?>
 <!DOCTYPE html>

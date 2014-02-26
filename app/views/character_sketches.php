@@ -8,15 +8,15 @@ require '../models/blocks.php';
 
 if (isset($_GET['projectId'])) {
 	$projectId = $_GET['projectId'];
-	echo 'GET projectId: '.$projectId;
+	$_SESSION['projectId'] = $projectId;
 } elseif (isset($_POST['projectId'])) {
 	$projectId = $_POST['projectId'];
-	echo 'POST projectId: '.$projectId;
+	$_SESSION['projectId'] = $projectId;
 	$characterName = $_POST['characterName'];
 	$characterDesc = $_POST['characterDesc'];
 }
 
-$characters = getCharacters($_SESSION['id'], $projectId);
+$characters = getCharacters($_SESSION['id'], $_SESSION['projectId']);
 ?>
 <h4 class="dkstblue-txt">Characters</h4>
 <ul>
@@ -33,7 +33,7 @@ $characters = getCharacters($_SESSION['id'], $projectId);
 			<input id="character-name" type="text" class="form-control" name="characterName" placeholder="Name">
 			<textarea id="character-desc" name="characterDesc" class="form-control" rows="10" placeholder="Description"></textarea>
 			<input id="new-character-btn" type="button" class="btn btn-default" value="Add Character" onclick="handleNewCharacterClick(event);">
-			<input type="hidden" name="projectId" <?php echo 'value="'.$projectId.'"' ?>>
+			<input type="hidden" name="projectId" <?php echo 'value="'.$_SESSION['projectId'].'"' ?>>
 			<input type="hidden" name="action" value="newCharacter">
 		</form>
 	</div>

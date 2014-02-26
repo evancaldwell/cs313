@@ -4,8 +4,12 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require_once 'models/blocks.php';
+require $_SERVER['DOCUMENT_ROOT'].'/app/models/blocks.php';
 
+unset($successMessage);
+unset($dangerMessage);
+unset($warningMessage);
+unset($infoMessage);
 // check to see if any notification messages have been passed to $_GET and then display the proper one
 if (isset($_GET['successMessage'])) {
 	$successMessage = $_GET['successMessage'];
@@ -53,8 +57,8 @@ $projects = getProjects($_SESSION['id']);
 						</div>
 							<div class="col-md-4">
 							<form action="controllers/blocks.php" method="POST">
-								<input type="text" class="form-control" name="projectTitle" placeholder="Project Title">
-								<input type="text" class="form-control" name="projectDesc" placeholder="Project Description">
+								<input id="projectTitle" type="text" class="form-control" name="projectTitle" placeholder="Project Title">
+								<input id="projectDesc" type="text" class="form-control" name="projectDesc" placeholder="Project Description">
 								<input type="submit" class="btn default-btn" value="Add Project">
 								<input type="hidden" name="action" value="newProject">
 							</form>

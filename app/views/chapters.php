@@ -6,9 +6,17 @@ if (!isset($_SESSION)) {
 
 require_once '../models/blocks.php';
 
-$projectId = $_GET['projectId'];
+if (isset($_GET['projectId'])) {
+	$projectId = $_GET['projectId'];
+	$_SESSION['projectId'] = $projectId;
+} elseif (isset($_POST['projectId'])) {
+	$projectId = $_POST['projectId'];
+	$_SESSION['projectId'] = $projectId;
+	$chapterNum = $_POST['chapterNum'];
+	$chapterName = $_POST['chapterName'];
+}
 
-$chapters = getChapters($_SESSION['id'], $projectId);
+$chapters = getChapters($_SESSION['id'], $_SESSION['projectId']);
 ?>
 <h4 class="dkstblue-txt">Chapter List</h4>
 <ul>

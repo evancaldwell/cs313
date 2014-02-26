@@ -42,6 +42,19 @@ $(function() { // this is the same as $(document).ready(function(){});
     e.preventDefault();
   });
 
+  function getComponents(){ // turn this into the function tat gets called when things are changed
+    // pull in the three main components
+    $.get("views/block-input.php", {projectId: projectId}, function(data) {
+        $("#block-input").html(data);
+    });
+    $.get("views/character_sketches.php", {projectId: projectId}, function(data) {
+        $("#character-sketches").html(data);
+    });
+    $.get("views/chapters.php", {projectId: projectId}, function(data) {
+        $("#chapters").html(data);
+    });
+  }
+
   $(".project-tile").click(function(){
     // get the projectId from the div that was clicked
     var projectId = $(this).attr("id");
@@ -79,6 +92,29 @@ $(function() { // this is the same as $(document).ready(function(){});
   
 });
 
+// function handleNewProjectClick(e) {
+//       var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
+//       var projectTitle = document.getElementById('project-title').value;
+//       var projectDesc = document.getElementById('project-desc').value;
+
+//       $.ajax({
+//         type: "POST",
+//         url: url,
+//         data: {action: "newProject", projectTitle: projectTitle, projectDesc: projectDesc, projectId: 1},
+//         success: function(data)
+//         {
+//           // var returnedData = JSON.parse('<?php echo $data ?>');
+//           alert('returned data: ' + data); // show response from the php script.
+//           //could call a second function to recal the character-sketches.php.
+//           $.get("views/character_sketches.php", {projectId: data.projectId}, function(data) {
+//               $("#character-sketches").html(data);
+//           });
+//         }
+//       });
+
+//       e.preventDefault(); // avoid to execute the actual submit of the form.
+//   }
+
 function handleNewCharacterClick(e) {
       var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
       var characterName = document.getElementById('character-name').value;
@@ -87,7 +123,7 @@ function handleNewCharacterClick(e) {
       $.ajax({
         type: "POST",
         url: url,
-        data: {action: "newCharacter", characterName: characterName, characterDesc: characterDescription, projectId: 1},
+        data: {action: "newCharacter", characterName: characterName, characterDesc: characterDescription},
         success: function(data)
         {
           // var returnedData = JSON.parse('<?php echo $data ?>');
@@ -131,16 +167,16 @@ function handleNewChapterClick(e) {
 function handleNewBlockClick(e) {
       var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
       var blockContent = document.getElementById('block-content').value;
-      var blockChapterSelect = document.getElementById('block-chapter-select').value;
+      var chapter = document.getElementById('block-chapter-select').value;
 
       $.ajax({
         type: "POST",
         url: url,
-        data: {action: "newBlock", blockContent: blockContent, chapter: blockChapterSelect, projectId: 1},
+        data: {action: "newBlock", blockContent: blockContent, chapter: chapter},
         success: function(data)
         {
           // var returnedData = JSON.parse('<?php echo $data ?>');
-          alert('returned data: ' + data); // show response from the php script.
+          // alert('returned data: ' + data); // show response from the php script.
           //could call a second function to recal the character-sketches.php.
           $.get("views/block-input.php", {projectId: data.projectId}, function(data) {
               $("#block-input").html(data);

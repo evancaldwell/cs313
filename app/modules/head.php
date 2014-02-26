@@ -22,10 +22,10 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 	
-	<!-- the main js file -->
-	<script type="text/javascript" src="/app/js/scribesketch.js"></script>
     <!-- ckeditor -->
 	<script src="/app/ckeditor/ckeditor.js"></script>
+	<!-- the main js file -->
+	<script type="text/javascript" src="/app/js/scribesketch.js"></script>
 
 	<!-- web fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Indie+Flower|Cabin+Sketch' rel='stylesheet' type='text/css'>

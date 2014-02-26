@@ -27,7 +27,7 @@ switch ($action) {
         $errors = array();
         if(empty($fname) || empty($lname) || empty($email) || empty($password)) {
             $warningMessage = "All fields are required, please fix any missing information";
-            include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            header('location:/app/index.php?warningMessage='.$warningMessage);
             exit;
         }
         
@@ -36,7 +36,6 @@ switch ($action) {
             $regResult = add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip);
             if ($regResult < 1) {
             	$warningMessage = "There was a problemm adding info to database.";
-                // $_SESSION['loggedin'] = false;
                 header('location:/app/index.php?warningMessage='.$warningMessage);
             } else {
                 // login the user

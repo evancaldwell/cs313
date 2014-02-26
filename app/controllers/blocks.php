@@ -14,6 +14,8 @@ if (isset($_GET['action'])) { //**** need to change this to pull the hidden fiel
 $userId = $_SESSION['id'];
 if (isset($_SESSION['projectId'])) {
     $projectId = $_SESSION['projectId'];
+} else {
+    echo 'projectId not set';
 }
 
 switch ($action) {
@@ -30,6 +32,7 @@ switch ($action) {
             if ($newProjId < 1) {
             	$message = "There was a problemm adding the chapter to database.";
             } else {
+                $_SESSION['projectId'] = $newProjId;
             	$message = "Added your chapter, keep writing!";
             	header('location:../index.php');
             }
@@ -40,7 +43,7 @@ switch ($action) {
 		break;
 
 	case 'newChapter':
-		$projectId = 1; //TODO: this needs to be pulled dynamically
+		// $projectId = 1; //TODO: this needs to be pulled dynamically
 		$chapterNum = $_POST['chapterNum'];
 		$chapterName = $_POST['chapterName'];
 
@@ -49,7 +52,7 @@ switch ($action) {
             // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
             // exit;
         } else if (!empty($chapterNum) || !empty($chapterName)) {
-            $newChapId = addChapter($chapterNum, $chapterName, $projectId);
+            $newChapId = addChapter($chapterNum, $chapterName, $_SESSION['projectId']);
             if ($newChapId < 1) {
             	$message = "There was a problemm adding the chapter to database.";
             } else {
@@ -81,7 +84,7 @@ switch ($action) {
         } else if (!empty($chapterId) && !empty($blockContent)) {
             $addBlockResult = addBlock($userId, $chapterId, $blockContent);
             if ($addBlockResult < 1) {
-            	$message = "There was a problemm adding the block to database.";
+            	$message = "There was a problem adding the block to database.";
             } else {
             	$message = "Added your block, keep writing!";
                 $data = [
@@ -90,6 +93,8 @@ switch ($action) {
                 "blockContent"=>$blockContent,
                 "message"=>$message
                 ];
+
+                return $data;
             	// header('location:../index.php');
             }
         } else {
@@ -99,7 +104,7 @@ switch ($action) {
 		break;
 
     case 'newCharacter':
-        $projectId = $_POST['projectId']; //TODO: this needs to be pulled dynamically
+        $projectId = $_SESSION['projectId']; //TODO: this needs to be pulled dynamically
         $characterName = $_POST['characterName'];
         $characterDesc = $_POST['characterDesc'];
 
@@ -108,7 +113,7 @@ switch ($action) {
             // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
             // exit;
         } else if (!empty($characterName) || !empty($characterDesc)) {
-            $newChartrId = addCharacter($characterName, $characterDesc, $projectId);
+            $newChartrId = addCharacter($characterName, $characterDesc, $_SESSION['projectId']);
             if ($newChartrId < 1) {
                 $message = "There was a problemm adding the chapter to database.";
             } else {
@@ -144,7 +149,7 @@ switch ($action) {
 		break;
 
 	default:
-		# code...
+		header('locaion: /app/index.php');
 		break;
 }
 
