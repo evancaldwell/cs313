@@ -7,7 +7,7 @@
             <li class="dropdown">
                 <a href="../controllers/users.php?action=registerView">Register</a>
                 <div>
-                    <form action="/app/controllers/users.php" method="POST">
+                    <form action="../controllers/users.php" method="POST">
                         <fieldset>
                         <input type="text" name="email" placeholder="Email">
                         <input type="password" name="pass" id="pass" placeholder="Password">
@@ -38,7 +38,7 @@
                     //$loginForm = getSnippet('loginForm');
                     //echo $loginForm[0];
                     ?>-->
-                    <form action="/app/controllers/users.php" method="POST">
+                    <form action="../controllers/users.php" method="POST">
                         <input type="text" name="email" placeholder="email">
                         <input type="password" name="password" placeholder="password">
                         <input type="submit" value="Login">
@@ -49,7 +49,7 @@
         <?php } else { ?>
             <li><a href="****accountSettings.html">Welcome, <?php echo $_SESSION['fname'] ?></a></li>
             <li>|</li>
-            <li><a href="/app/controllers/users.php?action=logout">Logout</a></li>
+            <li><a href="../controllers/users.php?action=logout">Logout</a></li>
             <?php if($_SESSION['loggedin'] == true && $_SESSION['rights'] < 3): ?>
             <li><a href="/admin">Admin</a></li>
             <?php endif ?>

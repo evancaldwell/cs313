@@ -27,7 +27,7 @@ switch ($action) {
         $errors = array();
         if(empty($fname) || empty($lname) || empty($email) || empty($password)) {
             $warningMessage = "All fields are required, please fix any missing information";
-            header('location:/app/index.php?warningMessage='.$warningMessage);
+            header('location:../index.php?warningMessage='.$warningMessage);
             exit;
         }
         
@@ -36,7 +36,7 @@ switch ($action) {
             $regResult = add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip);
             if ($regResult < 1) {
             	$warningMessage = "There was a problemm adding info to database.";
-                header('location:/app/index.php?warningMessage='.$warningMessage);
+                header('location:../index.php?warningMessage='.$warningMessage);
             } else {
                 // login the user
                 // $_SESSION['id'] = $userInfo['id'];
@@ -61,22 +61,22 @@ switch ($action) {
                     
                     if($userInfo['active'] == 1){
                         $successMessage = 'Thank you for registering!';
-                        header('location: /app/home.php?successMessage='.$successMessage);
-                        // include '/app/home.php';
+                        header('location: ../home.php?successMessage='.$successMessage);
+                        // include '../home.php';
                     } else {
                         $warningMessage = 'There was a problem with your registration';
-                        header('location:/app/index.php?warningMessage='.$warningMessage);
+                        header('location:../index.php?warningMessage='.$warningMessage);
                     }
                 } else {
                     $warningMessage = "Sorry, there was a problem with your registration. Please try again";
-                    header('location: /app/index.php?warningMessage='.$warningMessage);
+                    header('location: ../index.php?warningMessage='.$warningMessage);
                 }
             }
         } else {
             $warningMessage = "There was an error with the data in the form";
         }
 
-        include $_SERVER['DOCUMENT_ROOT'].'/app/home.php';
+        include '../home.php';
 		break;
 
 	case 'login': //TODO: somehow getting an error and landing on /controllers/default.php instead of /app/controllers/default.php
@@ -86,7 +86,7 @@ switch ($action) {
         
         if (empty($email) || empty($password)) {
             $warningMessage = 'Sorry, the email and/or password is incorrect. Please confirm and try again';
-            header('location: /app/index.php?warningMessage='.$warningMessage);
+            header('location: ../index.php?warningMessage='.$warningMessage);
             exit;
         }
         $userInfo = loginUser($email, $password);
@@ -103,15 +103,15 @@ switch ($action) {
             
             if($userInfo['active'] == 1){
                 $successMessage = 'You have been logged in! ';
-                header('location: /app/home.php?successMessage='.$successMessage);
-                // include '/app/home.php';
+                header('location: ../home.php?successMessage='.$successMessage);
+                // include '../home.php';
             } else {
                 $warningMessage = 'There was a problem logging you in';
-                header('location:/app/index.php?warningMessage='.$warningMessage);
+                header('location:../index.php?warningMessage='.$warningMessage);
             }
         } else {
             $warningMessage = "Sorry, there was a problem with the login. Please try again";
-            header('location: /app/index.php?warningMessage='.$warningMessage);
+            header('location: ../index.php?warningMessage='.$warningMessage);
         }
 		break;
 
@@ -124,7 +124,7 @@ switch ($action) {
             unset($_SESSION['password']);
             unset($_SESSION['active']);
             unset($_SESSION['loggedin']);
-            // header('location:/app/');
+            // header('location:../');
             $successMessage = 'You have been logged out.';
             include '../index.php';
         break;

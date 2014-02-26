@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/app/models/conn_admin.php";
+require_once 'models/conn_admin.php';
 
 function addProject($userId, $title, $description) {
     global $db;

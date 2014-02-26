@@ -93,7 +93,7 @@ $(function() { // this is the same as $(document).ready(function(){});
 });
 
 // function handleNewProjectClick(e) {
-//       var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
+//       var url = "../controllers/blocks.php"; // the script where you handle the form input.
 //       var projectTitle = document.getElementById('project-title').value;
 //       var projectDesc = document.getElementById('project-desc').value;
 
@@ -116,7 +116,7 @@ $(function() { // this is the same as $(document).ready(function(){});
 //   }
 
 function handleNewCharacterClick(e) {
-      var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
+      var url = "controllers/blocks.php"; // the script where you handle the form input.
       var characterName = document.getElementById('character-name').value;
       var characterDescription = document.getElementById('character-desc').value;
 
@@ -139,7 +139,7 @@ function handleNewCharacterClick(e) {
   }
 
 function handleNewChapterClick(e) {
-      var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
+      var url = "controllers/blocks.php"; // the script where you handle the form input.
       var chapterNum = document.getElementById('chapter-number').value;
       var chapterName = document.getElementById('chapter-name').value;
 
@@ -165,7 +165,7 @@ function handleNewChapterClick(e) {
   }
 
 function handleNewBlockClick(e) {
-      var url = "/app/controllers/blocks.php"; // the script where you handle the form input.
+      var url = "controllers/blocks.php"; // the script where you handle the form input.
       var blockContent = document.getElementById('block-content').value;
       var chapter = document.getElementById('block-chapter-select').value;
 

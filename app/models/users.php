@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/app/models/conn_admin.php";
+require_once 'models/conn_admin.php';
     
 function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip) {
     // parameters are the feilds of the form that we want to insert into the db

@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require $_SERVER['DOCUMENT_ROOT'].'/app/models/blocks.php';
+require 'models/blocks.php';
 
 unset($successMessage);
 unset($dangerMessage);
@@ -27,14 +27,14 @@ $projects = getProjects($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html>
-	<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/head.php'; ?>
+	<?php include 'modules/head.php'; ?>
 	<body class="mainblue-bk">
-		<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/menu_bar.php'; ?>
-		<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php'; ?>
+		<?php include 'modules/menu_bar.php'; ?>
+		<?php include 'modules/header.php'; ?>
 		<div class="container">
 			<?php 
-				// include $_SERVER['DOCUMENT_ROOT'].'/app/modules/header.php';
-				include $_SERVER['DOCUMENT_ROOT'].'/app/modules/notifications.php';
+				// include 'modules/header.php';
+				include 'modules/notifications.php';
 			?>
 			<main id="main">
 				<?php if (count($projects) >= 1) { ?>
@@ -104,7 +104,7 @@ $projects = getProjects($_SESSION['id']);
 					</div>
 				</div>
 			</main>
-			<?php include $_SERVER['DOCUMENT_ROOT'].'/app/modules/footer.php'; ?>
+			<?php include 'modules/footer.php'; ?>
 		</div>
 	</body>
 </html>

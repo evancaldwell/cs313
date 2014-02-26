@@ -25,7 +25,7 @@ switch ($action) {
 
 		if(empty($title) || empty($description)) {
             $message = "All fields are required, please fix any missing information";
-            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // include 'index.php';
             // exit;
         } else if (!empty($title) || !empty($description)) {
             $newProjId = addProject($userId, $title, $description);
@@ -49,7 +49,7 @@ switch ($action) {
 
 		if(empty($chapterNum) || empty($chapterName)) {
             $message = "All fields are required, please fix any missing information";
-            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // include 'index.php';
             // exit;
         } else if (!empty($chapterNum) || !empty($chapterName)) {
             $newChapId = addChapter($chapterNum, $chapterName, $_SESSION['projectId']);
@@ -58,12 +58,12 @@ switch ($action) {
             } else {
             	$message = "Added your chapter, keep writing!";
 
-                $data = [
+                $data = array(
                 "projectId"=>$projectId,
                 "chapterNum"=>$chapterNum,
                 "chapterName"=>$chapterName,
                 "message"=>$message
-                ];
+                );
             	// header('location:../index.php');
             }
         } else {
@@ -79,7 +79,7 @@ switch ($action) {
 		// check to make sure the user selected a chapter and entered text
 		if(empty($chapterId) || empty($blockContent)) {
             $message = "All fields are required, please fix any missing information";
-            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // include 'index.php';
             // exit;
         } else if (!empty($chapterId) && !empty($blockContent)) {
             $addBlockResult = addBlock($userId, $chapterId, $blockContent);
@@ -110,7 +110,7 @@ switch ($action) {
 
         if(empty($characterName) || empty($characterDesc)) {
             $message = "All fields are required, please fix any missing information";
-            // include $_SERVER['DOCUMENT_ROOT'].'/app/index.php';
+            // include 'index.php';
             // exit;
         } else if (!empty($characterName) || !empty($characterDesc)) {
             $newChartrId = addCharacter($characterName, $characterDesc, $_SESSION['projectId']);
@@ -149,7 +149,7 @@ switch ($action) {
 		break;
 
 	default:
-		header('locaion: /app/index.php');
+		header('locaion: ../index.php');
 		break;
 }
 

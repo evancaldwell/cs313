@@ -22,7 +22,7 @@ $chapters = getChapters($_SESSION['id'], $_SESSION['projectId']);
 <ul>
 	<?php
 		foreach ($chapters as $row) {
-			echo '<li><a href="/app/controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].'</a></li>';
+			echo '<li><a href="../controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].'</a></li>';
 		}
 	?>
 </ul>
