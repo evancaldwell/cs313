@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require_once '../models/blocks.php';
+require_once 'models/blocks.php';
 
 if (isset($_GET['projectId'])) {
 	$projectId = $_GET['projectId'];

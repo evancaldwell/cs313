@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require '../models/blocks.php';
+require 'models/blocks.php';
 
 if (isset($_GET['projectId'])) {
 	$projectId = $_GET['projectId'];
