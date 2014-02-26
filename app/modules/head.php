@@ -3,10 +3,10 @@
 	<meta charset="utf-8" />
 	<meta name="keywords" content="coding, html, code garden,css">
 	<meta name="description" content="latest information about html market">
-	<link href="../css/style.css" rel="stylesheet">
-	<link href="../css/tile-style.css" rel="stylesheet">
-	<link href="../css/desk-style.css" rel="stylesheet">
-	<link href="../css/code-style.css" rel="stylesheet">
+	<link href="/app/css/style.css" rel="stylesheet">
+	<link href="/app/css/tile-style.css" rel="stylesheet">
+	<link href="/app/css/desk-style.css" rel="stylesheet">
+	<link href="/app/css/code-style.css" rel="stylesheet">
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -23,9 +23,9 @@
     <![endif]-->
 	
     <!-- ckeditor -->
-	<script src="../ckeditor/ckeditor.js"></script>
+	<script src="/app/ckeditor/ckeditor.js"></script>
 	<!-- the main js file -->
-	<script type="text/javascript" src="../js/scribesketch.js"></script>
+	<script type="text/javascript" src="/app/js/scribesketch.js"></script>
 
 	<!-- web fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Indie+Flower|Cabin+Sketch' rel='stylesheet' type='text/css'>
