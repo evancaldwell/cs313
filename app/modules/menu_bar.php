@@ -1,7 +1,6 @@
 <nav id="menu-bar" class="dark-bk">
     <ul>
         <?php
-        require_once "../library/library.php";
         if(!isset($_SESSION['loggedin'])) {
         ?>
             <li class="dropdown">
