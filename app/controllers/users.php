@@ -1,7 +1,9 @@
 <?php
 session_start();
 // bring in the model and library
-require "../models/users.php";
+echo 'before users controller require';
+require "models/users.php";
+echo 'after users controller require';
 
 if (isset($_GET['action'])) { //**** need to change this to pull the hidden fields
     $action = $_GET['action'];
