@@ -1,9 +1,10 @@
 <?php
-echo 'before users model require';
+echo 'before users model require | ';
 require_once 'conn_admin.php';
-echo 'after users model require';
+echo 'after users model require | ';
     
 function add_user($email, $password, $fname, $lname, $phone, $addr1, $addr2, $city, $state, $zip) {
+    echo 'hit add_user function in model_users | ';
     // parameters are the feilds of the form that we want to insert into the db
     // pull in the database from the controller
     global $db;
