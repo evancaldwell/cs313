@@ -5,33 +5,7 @@
         if(!isset($_SESSION['loggedin'])) {
         ?>
             <li class="dropdown">
-                <a href="../controllers/users.php?action=registerView">Register</a>
-                <div>
-                    <form action="../controllers/users.php" method="POST">
-                        <fieldset>
-                        <input type="text" name="email" placeholder="Email">
-                        <input type="password" name="pass" id="pass" placeholder="Password">
-                        <input type="password" name="pass2" id="pass2" onkeyup="checkPass(); return false;" placeholder="Confirm Password">
-                        <span id="pass-match-mssg"></span>
-                        </fieldset>
-                        <fieldset>
-                        <input type="text" name="fname" placeholder="First Name">
-                        <input type="text" name="lname" placeholder="Last Name">
-                        <input type="text" name="phone" placeholder="Phone Number">
-                        <input type="text" name="addr1" placeholder="Street Address">
-                        <input type="text" name="addr2" placeholder="Apt. #...">
-                        <input type="text" name="city" placeholder="City">
-                        <input type="text" name="state" placeholder="State">
-                        <input type="text" name="zip" placeholder="Zip">
-                        </fieldset>
-                        <input type="submit" value="Register">
-                        <input type="hidden" name="action" value="register">
-                    </form>
-                </div>
-            </li>
-            <li>|</li>
-            <li class="dropdown">
-                <a href="/people?action=loginView">Login</a>
+                <a href="#">Login</a>
                 <div>
                     <!--<?php
                     // get the snippet for the journal entry form to use in the view

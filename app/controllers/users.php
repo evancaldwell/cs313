@@ -126,7 +126,7 @@ switch ($action) {
             unset($_SESSION['loggedin']);
             // header('location:../');
             $successMessage = 'You have been logged out.';
-            include '../index.php';
+            header('location: ../home.php?successMessage='.$successMessage);
         break;
 
 	default:
