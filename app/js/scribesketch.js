@@ -127,7 +127,7 @@ function handleNewCharacterClick(e) {
         success: function(data)
         {
           // var returnedData = JSON.parse('<?php echo $data ?>');
-          alert('returned data: ' + data); // show response from the php script.
+          //alert('returned data: ' + data); // show response from the php script.
           //could call a second function to recal the character-sketches.php.
           $.get("views/character_sketches.php", {projectId: data.projectId}, function(data) {
               $("#character-sketches").html(data);
@@ -150,7 +150,7 @@ function handleNewChapterClick(e) {
         success: function(data)
         {
           // var returnedData = JSON.parse('<?php echo $data ?>');
-          alert('returned data: ' + data); // show response from the php script.
+          //alert('returned data: ' + data); // show response from the php script.
           //could call a second function to recal the character-sketches.php.
           $.get("views/chapters.php", {projectId: data.projectId}, function(data) {
               $("#chapters").html(data);

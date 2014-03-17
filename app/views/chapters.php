@@ -4,26 +4,26 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-require_once 'models/blocks.php';
+require_once '../models/blocks.php';
 
-// if (isset($_GET['projectId'])) {
-// 	$projectId = $_GET['projectId'];
-// 	$_SESSION['projectId'] = $projectId;
-// } elseif (isset($_POST['projectId'])) {
-// 	$projectId = $_POST['projectId'];
-// 	$_SESSION['projectId'] = $projectId;
-// 	$chapterNum = $_POST['chapterNum'];
-// 	$chapterName = $_POST['chapterName'];
-// }
+if (isset($_GET['projectId'])) {
+	$projectId = $_GET['projectId'];
+	$_SESSION['projectId'] = $projectId;
+} elseif (isset($_POST['projectId'])) {
+	$projectId = $_POST['projectId'];
+	$_SESSION['projectId'] = $projectId;
+	$chapterNum = $_POST['chapterNum'];
+	$chapterName = $_POST['chapterName'];
+}
 
-// $chapters = getChapters($_SESSION['id'], $_SESSION['projectId']);
-$chapters = getChapters(1, 1);
+$chapters = getChapters($_SESSION['id'], $_SESSION['projectId']);
+// $chapters = getChapters(1, 1);
 ?>
 <h4 class="dkstblue-txt">Chapter List</h4>
 <ul>
 	<?php
 		foreach ($chapters as $row) {
-			echo '<li><a href="../controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].'</a></li>';
+			echo '<li><a href="controllers/blocks.php?action=chapterBlocks&&chapterId='.$row['id'].'">'.$row['chapter'].' - '.$row['title'].'</a></li>';
 		}
 	?>
 </ul>

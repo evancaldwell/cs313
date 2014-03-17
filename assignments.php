@@ -16,6 +16,7 @@ session_start();
 							<h3>CS 313 Assignments</h3>
 							<ul>
 								<li><a href="/views/assignments/class_survey.php">Class Survey</a></li>
+								<li><a href="http://ec2-54-209-229-29.compute-1.amazonaws.com:8080/forum/signin.jsp">Java Forum (username: test, password: pass)</a></li>
 							</ul>
 						</div>
 					</div>

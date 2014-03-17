@@ -3,17 +3,17 @@
 	<meta charset="utf-8" />
 	<meta name="keywords" content="coding, html, code garden,css">
 	<meta name="description" content="latest information about html market">
-	<link href="/app/css/style.css" rel="stylesheet">
-	<link href="/app/css/tile-style.css" rel="stylesheet">
-	<link href="/app/css/desk-style.css" rel="stylesheet">
-	<link href="/app/css/code-style.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/tile-style.css" rel="stylesheet">
+	<link href="css/desk-style.css" rel="stylesheet">
+	<link href="css/code-style.css" rel="stylesheet">
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	<!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,9 +23,9 @@
     <![endif]-->
 	
     <!-- ckeditor -->
-	<script src="/app/ckeditor/ckeditor.js"></script>
+	<script src="ckeditor/ckeditor.js"></script>
 	<!-- the main js file -->
-	<script type="text/javascript" src="/app/js/scribesketch.js"></script>
+	<script type="text/javascript" src="js/scribesketch.js"></script>
 
 	<!-- web fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Indie+Flower|Cabin+Sketch' rel='stylesheet' type='text/css'>

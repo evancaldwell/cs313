@@ -2,7 +2,8 @@
 session_start();
 // bring in the model and library
 echo 'before users controller require | ';
-require "models_users.php";
+require '../models/users.php';
+require '../../library/library.php';
 echo 'after users controller require | ';
 
 if (isset($_GET['action'])) { //**** need to change this to pull the hidden fields
@@ -13,7 +14,7 @@ if (isset($_GET['action'])) { //**** need to change this to pull the hidden fiel
 
 switch ($action) {
 	case 'register':
-        echo 'in the register switch | '
+        echo 'in the register switch | ';
 		$email = valEmail($_POST['email']);
         $password = hashPass($_POST['pass']);
         $fname = $_POST['fname'];

@@ -1,7 +1,3 @@
-<?php
-$dir = sys_get_temp_dir();
-session_save_path($dir);
-?>
 <div id="page-header" class="row offwhite-bk">
 	<div class="logo">
 		<img src="" alt="">

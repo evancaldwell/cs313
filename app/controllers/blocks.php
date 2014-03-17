@@ -86,12 +86,12 @@ switch ($action) {
             	$message = "There was a problem adding the block to database.";
             } else {
             	$message = "Added your block, keep writing!";
-                $data = [
+                $data = array(
                 "projectId"=>$projectId,
                 "chapterId"=>$chapterId,
                 "blockContent"=>$blockContent,
                 "message"=>$message
-                ];
+                );
 
                 return $data;
             	// header('location:../index.php');
@@ -118,12 +118,12 @@ switch ($action) {
             } else {
                 $message = "Added your new character, keep writing!";
                 // return data to the js funcion and then use the function to call the php file again
-                $data = [
+                $data = array(
                 "projectId"=>$projectId,
                 "characterName"=>$characterName,
                 "characterDesc"=>$characterDesc,
                 "message"=>$message
-                ];
+                );
                 // echo json_encode($data);
                 // exit;
                 return json_encode($data);
@@ -143,8 +143,8 @@ switch ($action) {
             $infoMessage = 'There were no blocks added to this chapter.';
         }
 
-        include '../views/chapter_blocks.php';
-        // header('location: ../views/chapter_blocks.php?chapterId='.$chapterId.'&blocks='.$blocks);
+        // include '../views/chapter_blocks.php';
+        header('location: ../chapter_blocks.php?chapterId='.$chapterId);
 		break;
 
 	default:
